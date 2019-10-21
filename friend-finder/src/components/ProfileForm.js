@@ -3,16 +3,19 @@ import axios from 'axios';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-export default function ProfileForm() {
 
-    const [search, setSearch] = useState([]); 
+export default function ProfileForm({values, touched, errors, status}) {
+
+    const [user, setUser] = useState([]); 
+    useEffect(()=>{
+        status && setUser(user => [...user, satus])
+    }, [status])
+
 
     const handleChange = e => {
         console.log(e.target.value);
-        setSearch(e.target.value);
+        setUser(e.target.value);
     };
-
-
 
     return (
 
@@ -60,7 +63,7 @@ export default function ProfileForm() {
 
 </div>
     );
-};
+ };
 
 const FormikProfile = withFormik({
     mapPropsToValues({firstname, lastname, age, location}) {
