@@ -4,11 +4,11 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 
-export default function ProfileForm({values, touched, errors, status}) {
+const ProfileForm = ({values, touched, errors, status}) => {
 
     const [user, setUser] = useState([]); 
     useEffect(()=>{
-        status && setUser(user => [...user, satus])
+        status && setUser(user => [...user, status])
     }, [status])
 
 
@@ -19,21 +19,20 @@ export default function ProfileForm({values, touched, errors, status}) {
 
     return (
 
-<div classname='FormContainer'>
+<div className='FormContainer'>
 
     <Form>
         {/* FIRST NAME */}
-        <input className='input'
+        <Field className='input'
         type='text'
         placeholder='Enter First Name'
-        name='firstname'
-        onChange={handleChange}/>
+        name='firstname'/>
           {touched.firstname && errors.firstname && (
          <p className='error'>{errors.firstname}</p>
         )}
 
         {/* LAST NAME */}
-        <input className='input'
+        <Field className='input'
         type='text'
         placeholder='Enter Last Name'
         name='lastname'/>
@@ -42,7 +41,7 @@ export default function ProfileForm({values, touched, errors, status}) {
         )}
 
         {/* AGE */}  
-        <input className='input'
+        <Field className='input'
         type='text'
         placeholder='Enter Age'
         name='age'/>
@@ -51,7 +50,7 @@ export default function ProfileForm({values, touched, errors, status}) {
         )}
 
           {/* LOCATION */}  
-          <input className='input'
+          <Field className='input'
         type='text'
         placeholder='Enter Location'
         name='location'/>
@@ -80,8 +79,8 @@ const FormikProfile = withFormik({
         lastname: Yup.string().required('Please Enter Last Name'),
         age: Yup.string().required('Please Enter age'),
         location: Yup.string().required('Please Enter location')
-
     }),
+
     handleSubmit(values, {setStatus}) {
         axios.post('', values)
         .then(res => {setStatus(res.data); })

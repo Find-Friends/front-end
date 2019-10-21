@@ -6,7 +6,8 @@ import {
 
 export default function ProfileCard(props) {
     return (
-      <div>
+      <div className='FriendCard'>
+        <p>Friend</p>
         <Card>
             <CardImg src={props.friend1.image} alt="Profile User image" />
             <CardBody>
