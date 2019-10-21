@@ -1,7 +1,9 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import Login from "./components/Login";
+
+import Login from './components/Login';
+import UpdateUserProfile from './components/UpdateUserProfile';
 import SignUp from "./components/SignUp";
 
 import Profile from './components/Profile'
@@ -26,6 +28,13 @@ function App() {
     <Route path="/friends" component={Friends}/>
     <Route path="/signup" component={Signup}/>
     <Route path="/login" component={Login}/> */}
+
+
+
+     
+
+      <Route path='/edit-profile' component={UpdateUserProfile} />
+
 
 
 
