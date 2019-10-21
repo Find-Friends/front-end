@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import ProfileCard from './ProfileCard';
 import ProfileForm from './ProfileForm';
-export default function ProfileFriends() {
+export default function Profile() {
 
     const [friends, setFriends] = useState([]);
 

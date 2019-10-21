@@ -12,10 +12,7 @@ const ProfileForm = ({values, touched, errors, status}) => {
     }, [status])
 
 
-    const handleChange = e => {
-        console.log(e.target.value);
-        setUser(e.target.value);
-    };
+   
 
     return (
 
@@ -60,15 +57,13 @@ const ProfileForm = ({values, touched, errors, status}) => {
 
           {/* Hobbies - enter hobbies*/}
             <Field className='input'
-        type='textarea'
+        component='textarea'    
+        type='text'
         placeholder='Enter Hobbies'
         name='hobbies'/>
           {touched.hobbies && errors.hobbies && (
          <p className='error'>{errors.hobbies}</p>
         )}
-
-
-
 
     </Form>
 
@@ -77,12 +72,13 @@ const ProfileForm = ({values, touched, errors, status}) => {
  };
 
 const FormikProfile = withFormik({
-    mapPropsToValues({firstname, lastname, age, location}) {
+    mapPropsToValues({firstname, lastname, age, location, hobbies}) {
         return {
             firstname: firstname || "",
             lastname: lastname || "",
             age: age || "",
-            location: location || ""
+            location: location || "",
+            hobbies: hobbies || ""
         };
     },
 
@@ -90,9 +86,11 @@ const FormikProfile = withFormik({
         firstname: Yup.string().required('Please Enter First Name'),
         lastname: Yup.string().required('Please Enter Last Name'),
         age: Yup.string().required('Please Enter age'),
-        location: Yup.string().required('Please Enter location')
+        location: Yup.string().required('Please Enter a location'),
+        hobbies: Yup.string().required('Please Enter hobbies')
     }),
 
+    // POST REQUEST - NEED TO BE FILLED OUT!
     handleSubmit(values, {setStatus}) {
         axios.post('', values)
         .then(res => {setStatus(res.data); })
