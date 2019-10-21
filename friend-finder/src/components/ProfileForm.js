@@ -58,6 +58,18 @@ const ProfileForm = ({values, touched, errors, status}) => {
          <p className='error'>{errors.location}</p>
         )}
 
+          {/* Hobbies - enter hobbies*/}
+            <Field className='input'
+        type='textarea'
+        placeholder='Enter Hobbies'
+        name='hobbies'/>
+          {touched.hobbies && errors.hobbies && (
+         <p className='error'>{errors.hobbies}</p>
+        )}
+
+
+
+
     </Form>
 
 </div>
