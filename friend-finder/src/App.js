@@ -1,12 +1,16 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+
+import Login from './components/Login';
 
 import Profile from './components/Profile'
 import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="App">
+    <div >
       <h1>Friend Finder</h1>
+
       <Navbar/>
       <Profile/>
 
@@ -17,6 +21,9 @@ function App() {
     <Route path="/friends" component={Friends}/>
     <Route path="/signup" component={Signup}/>
     <Route path="/login" component={Login}/> */}
+
+
+      <Route path='/login' component={Login} />
 
     </div>
   );
