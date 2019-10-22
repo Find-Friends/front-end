@@ -69,7 +69,7 @@ class SignUp extends React.Component {
           <Input
             id="firstName"
             type="text"
-            name="name"
+            name="firstName"
             placeholder="First Name"
             value={this.state.credentials.firstName}
             onChange={this.handleChange}
