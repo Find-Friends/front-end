@@ -1,0 +1,45 @@
+.Navbar{
+  background:#0066FF;
+  display: flex;
+  height: 80px;
+  justify-content: space-evenly;
+}
+
+.Title{
+    padding-top: 15px;
+    justify-content: center;
+    /* border: 2px solid black; */
+    
+}
+
+.navbaritems{
+    padding-top: 25px;
+    /* border: 2px solid black; */
+   
+}
+
+.navlink{
+    
+    background-color: white;
+    color: #3498DB;
+    padding: 12px;
+    font-size: 15px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.navlink:hover {
+    background-color: rgb(0, 225, 255);
+    text-decoration: none;
+    color: white;
+  }
+
+  .navlink .active{
+    background-color: rgb(0, 225, 255);
+    text-decoration: none;
+  }
+
+  h1{
+    color: white; 
+  }
+

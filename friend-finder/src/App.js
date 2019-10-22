@@ -12,22 +12,23 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <div>
-      <h1>Friend Finder</h1>
-
+      {/* <h1>Friend Finder</h1> */}
+      <Navbar/>
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
 
+      <Route path="/profile" component={Profile}/> 
+      {/* <Route path="/friends" component={Friends}/> */}
 
       <Navbar/>
       {/* <Profile/> */}
 
-      {/*ROUTE PATHS */}
+      
+      
 
-    {/* <Route exact path='/' component={}/>
-    <Route path="/profile" component={Profile}/> 
-    <Route path="/friends" component={Friends}/>
-    <Route path="/signup" component={Signup}/>
-    <Route path="/login" component={Login}/> */}
+     
+    
+    
 
 
 

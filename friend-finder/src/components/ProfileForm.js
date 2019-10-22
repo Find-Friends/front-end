@@ -3,6 +3,8 @@ import axios from 'axios';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
+// Styling CSS
+import './Profile.css'
 
 const ProfileForm = ({values, touched, errors, status}) => {
 
@@ -16,7 +18,7 @@ const ProfileForm = ({values, touched, errors, status}) => {
 
     return (
 
-<div className='FormContainer'>
+<div>
 
     <Form>
         {/* FIRST NAME */}
