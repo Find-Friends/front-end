@@ -5,7 +5,7 @@ import ProfileCard from './ProfileCard';
 import ProfileForm from './ProfileForm';
 
 // Styling CSS
-import './profile.css'
+import './Profile.css'
 
 export default function Profile() {
 
@@ -25,18 +25,19 @@ export default function Profile() {
 
     return(
 
-        <section className="friend-list">
+    <div className="Profile">
 
-        
+       
 
-        <ProfileForm/>
-        
-
+        <div className="Leftside">
+            <div className="Userimgbox">User Image</div>
+            <div className="Friend-list">
+        <h2>Friends</h2>
         {friends.map(friend => {
             
             return(
                 
-                <div>
+                <div className='FriendCard'>
                
                 <ProfileCard key={friend.id} friend1={friend}/>
 
@@ -44,8 +45,14 @@ export default function Profile() {
             )
 
             })}
+            </div>
+        </div> 
 
-        </section>
+        <div className="Rightside">
+        <ProfileForm/>
+        </div>
+
+    </div>
     );
 
 };

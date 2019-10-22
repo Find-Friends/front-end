@@ -5,7 +5,7 @@ import {
 } from 'reactstrap';
 
 // Styling CSS
-import './profile.css'
+import './Profile.css'
 
 export default function ProfileCard(props) {
     return (
