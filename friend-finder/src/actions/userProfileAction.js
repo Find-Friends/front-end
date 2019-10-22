@@ -63,7 +63,7 @@ export const getAllUsers = id => dispatch => {
       .then(response => {
         console.log(response);
         dispatch({type: GET_ALL_USERS, payload: {
-          // users: response.data.
+          users: response.data.users,
           loading: false
         }})
       })

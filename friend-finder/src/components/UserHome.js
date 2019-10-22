@@ -1,24 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { getAllUsers } from '../actions';
 
 const UserHome = props => {
 
-  // const [users, setUsers] = useState([]);
-
   useEffect(() => {
     props.getAllUsers(props.match.params.id);
-    // if(props.users) {
-    //   setUsers(props.users);
-    // }  
   }, [])
 
   return (
     <>
       <h1>Users</h1>
-      {console.log(props.users)}
-      {/* {props.users && <p>Users</p>} */}
+      {props.loading && <p>Loading.....</p>}
+      <div>
+        {props.users.map(user => {
+          {console.log(user)}
+          return (
+            <div>
+              <h2>{user.firstName}</h2>
+              <h2>{user.lastName}</h2>
+              <h2>{user.age}</h2>
+              <h2>{user.description}</h2>
+            </div>
+          )
+        })}  
+      </div>
+      
     </>
   )
 
