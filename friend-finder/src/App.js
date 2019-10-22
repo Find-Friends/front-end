@@ -19,7 +19,7 @@ function App() {
 
 
       <Navbar/>
-      <Profile/>
+      {/* <Profile/> */}
 
       {/*ROUTE PATHS */}
 
@@ -33,7 +33,7 @@ function App() {
 
      
 
-      <Route path='/edit-profile' component={UpdateUserProfile} />
+      <Route path='/edit-profile/:id' component={UpdateUserProfile} />
 
 
 
