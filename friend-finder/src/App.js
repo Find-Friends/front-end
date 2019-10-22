@@ -20,6 +20,9 @@ function App() {
       <Route path="/profile" component={Profile}/> 
       {/* <Route path="/friends" component={Friends}/> */}
 
+      <Navbar/>
+      {/* <Profile/> */}
+
       
       
 
@@ -31,7 +34,7 @@ function App() {
 
      
 
-      <Route path='/edit-profile' component={UpdateUserProfile} />
+      <Route path='/edit-profile/:id' component={UpdateUserProfile} />
 
 
 
