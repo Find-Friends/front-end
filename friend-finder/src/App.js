@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import Login from './components/Login';
 import UpdateUserProfile from './components/UpdateUserProfile';
 import SignUp from "./components/SignUp";
+import UserHome from "./components/UserHome";
 
 import Profile from './components/Profile'
 import Navbar from './components/Navbar';
@@ -20,7 +21,7 @@ function App() {
       <Route path="/profile" component={Profile}/> 
       {/* <Route path="/friends" component={Friends}/> */}
 
-      <Navbar/>
+      {/* <Navbar/> */}
       {/* <Profile/> */}
 
       
@@ -35,6 +36,7 @@ function App() {
      
 
       <Route path='/edit-profile/:id' component={UpdateUserProfile} />
+      <Route path='/users/:id' component={UserHome} />
 
 
 

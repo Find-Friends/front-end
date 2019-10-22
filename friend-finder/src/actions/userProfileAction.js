@@ -3,6 +3,7 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 export const FETCH_USER = 'FETCH_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 export const DELETE_USER = 'DELETE_USER';
+export const GET_ALL_USERS = 'GET_ALL_USERS';
 
 export const fetchUser = id => dispatch => {
   dispatch({type: FETCH_USER, payload: {
@@ -48,6 +49,31 @@ export const updateUser = userData => dispatch => {
 
 export const deleteUser = id => dispatch => {
 
+}
+
+export const getAllUsers = id => dispatch => {
+  dispatch({type: GET_ALL_USERS, payload : {
+    error: null,
+    users: [],
+    user: null,
+    loading: true
+  }})
+  axiosWithAuth()
+    .get(`/api/users/${id}/all`)  
+      .then(response => {
+        console.log(response);
+        dispatch({type: GET_ALL_USERS, payload: {
+          // users: response.data.
+          loading: false
+        }})
+      })
+      .catch(error => {
+        console.log(error.response);
+        dispatch({type: GET_ALL_USERS, payload: {
+          error: error.response,
+          loading: false 
+        }})
+      })
 }
 
 

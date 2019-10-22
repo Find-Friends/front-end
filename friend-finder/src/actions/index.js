@@ -4,5 +4,7 @@ export {
   UPDATE_USER,
   updateUser,
   DELETE_USER,
-  deleteUser
+  deleteUser, 
+  getAllUsers,
+  GET_ALL_USERS
 } from './userProfileAction';
