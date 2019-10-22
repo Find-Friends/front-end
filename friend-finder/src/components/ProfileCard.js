@@ -4,6 +4,9 @@ import {
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 
+// Styling CSS
+import './profile.css'
+
 export default function ProfileCard(props) {
     return (
       <div className='FriendCard'>

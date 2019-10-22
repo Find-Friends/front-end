@@ -4,6 +4,8 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 import ProfileCard from './ProfileCard';
 import ProfileForm from './ProfileForm';
 
+// Styling CSS
+import './profile.css'
 
 export default function Profile() {
 
