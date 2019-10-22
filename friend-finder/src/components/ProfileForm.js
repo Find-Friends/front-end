@@ -18,9 +18,9 @@ const ProfileForm = ({values, touched, errors, status}) => {
 
     return (
 
-<div>
-
-    <Form>
+<div className='formholder'>
+    
+    <Form className="formLeft">
         {/* FIRST NAME */}
         <Field className='input'
         type='text'
@@ -49,16 +49,19 @@ const ProfileForm = ({values, touched, errors, status}) => {
         )}
 
           {/* LOCATION */}  
-          <Field className='input'
+        <Field className='input'
         type='text'
         placeholder='Enter Location'
         name='location'/>
           {touched.location && errors.location && (
          <p className='error'>{errors.location}</p>
         )}
+   
+    </Form>
 
-          {/* Hobbies - enter hobbies*/}
-            <Field className='input'
+{/* Hobbies - enter hobbies*/}
+    <Form className="formRight">
+    <Field className='input2'
         component='textarea'    
         type='text'
         placeholder='Enter Hobbies'
@@ -66,7 +69,6 @@ const ProfileForm = ({values, touched, errors, status}) => {
           {touched.hobbies && errors.hobbies && (
          <p className='error'>{errors.hobbies}</p>
         )}
-
     </Form>
 
 </div>
