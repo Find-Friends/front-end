@@ -4,7 +4,8 @@ const initialState = {
   loading: false,
   user: {},
   error: null, 
-  users: []
+  users: [],
+  userLoggedIn: false
 }
 
 export const userProfileReducer = (state = initialState, action) => {

@@ -4,6 +4,7 @@ export const FETCH_USER = 'FETCH_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const USER_LOGIN = 'USER_LOGIN';
 
 export const fetchUser = id => dispatch => {
   dispatch({type: FETCH_USER, payload: {
@@ -100,6 +101,23 @@ export const getAllUsers = id => dispatch => {
         }})
       })
 }
+
+export const userLogin = credentials => dispatch => {
+  dispatch({type: USER_LOGIN, payload: {
+    loading: true,
+    isLoggedIn: false
+  }})
+  axiosWithAuth()
+  .post('/api/auth/login', credentials)
+    .then(response => {
+      console.log(response);
+      
+    })
+    .catch(error => {
+      console.log(error);
+    })
+}
+
 
 
 
