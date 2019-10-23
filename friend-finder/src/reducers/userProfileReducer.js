@@ -8,12 +8,20 @@ import {
 
 const initialState = {
   loading: false,
-  user: null,
+
+  user: {},
   error: null,
   users: [],
   requests: [],
   friends: []
 };
+
+//   user: {},
+//   error: null, 
+//   users: [],
+//   userLoggedIn: false
+// }
+
 
 export const userProfileReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -62,6 +70,40 @@ export const userProfileReducer = (state = initialState, action) => {
           loading: loading
         };
       }
+// <<<<<<< dm-addfriend
+// =======
+//     }
+    case UPDATE_USER: {
+      const error = action.payload.error;
+      const user = action.payload.user;
+      const loading = action.payload.loading;
+      if (user !== null) {
+        return {
+          ...state,
+          user: user,
+          loading: loading
+        }
+      } else if (error !== null) {
+        return {
+          ...state,
+          error: error,
+          loading: loading
+        }
+      } else {
+        return {
+          ...state,
+          loading: loading
+        }
+      }
+    }
+    case DELETE_USER: {
+      return {
+        ...state,
+        user: {},
+        loading: false,
+        error: action.payload.error
+      }
+
     }
     case POST_FRIEND_REQUEST: {
     }

@@ -15,7 +15,7 @@ export default function Navbar () {
             
              <div className="navbaritems">
             <NavLink className="navlink" exact to="/">Home</NavLink>
-            <NavLink className="navlink" to="/profile">Edit Profile</NavLink>
+            <NavLink className="navlink" to="/profile">Profile</NavLink>
             <NavLink className="navlink" to="/friends">Friends</NavLink>
             <NavLink className="navlink" to="/signup">Sign Up</NavLink>
             <NavLink className="navlink" to="/login">Login</NavLink>

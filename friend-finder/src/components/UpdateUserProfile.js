@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 
-import { fetchUser } from '../actions/index'; 
+import { fetchUser, updateUser } from '../actions/index'; 
 
 const UpdateUserProfile = (props) => {
   // console.log('update user profile props', props);
@@ -15,17 +15,28 @@ const UpdateUserProfile = (props) => {
     description: '',
     interests: [] 
   })
+  
+  // useEffect(() => {
+  //   if (props.user) {
+  //     console.log(props.user);
+  //     setUserInfo(props.user);
+  //   } else {
+  //     props.fetchUser(props.match.params.id);
+  //   }   
+  // }, [props.user])
+  // Instead of using two useEffects like below if we want to do it in a single useEffect it can be done like the above example.
 
   useEffect(() => {
-    props.fetchUser(props.match.params.id);
+    props.fetchUser(props.match.params.id);  
+  }, [])
+
+  useEffect(() => {
     if (props.user) {
-      console.log(props.user);
-      setUserInfo(props.user);
+      setUserInfo(props.user)
     }
-
-  }, [props.fetchUser])
+  },[props.user])
   
-
+  
   const handleChange = event => {
     setUserInfo({
       ...userInfo,
@@ -35,12 +46,16 @@ const UpdateUserProfile = (props) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
-
-
+    props.updateUser(userInfo);
+    props.history.push(`/users/${props.match.params.id}`);
   }
 
   return (
+    <>
+    {/* {console.log("user props is -------", props.user)} */}
+    {/* {console.log('------user info-----', userInfo)} */}
+    {/* {props.loading ? <p>Loading</p> : */}
+    
     <Form onSubmit={handleSubmit}>
       <FormGroup>
         <Label for='firstName'>First Name</Label>
@@ -60,7 +75,7 @@ const UpdateUserProfile = (props) => {
           type='text'
           name='lastName'
           placeholder='Last Name'
-          value={userInfo.lastName}
+          value={userInfo.lastName || ''}
           onChange={handleChange}
         />
       </FormGroup>
@@ -68,10 +83,10 @@ const UpdateUserProfile = (props) => {
         <Label for='age'>Age</Label>
         <Input 
           id='age'
-          type='number'
+          type='text'
           name='age'
           placeholder='Age'
-          value={userInfo.age}
+          value={userInfo.age || ''}
           onChange={handleChange}
         />
       </FormGroup>
@@ -82,7 +97,7 @@ const UpdateUserProfile = (props) => {
           type='text'
           name='gender'
           placeholder='Gender'
-          value={userInfo.gender}
+          value={userInfo.gender || ''}
           onChange={handleChange}
         />
       </FormGroup>
@@ -93,7 +108,7 @@ const UpdateUserProfile = (props) => {
           type='text'
           name='location'
           placeholder='Location'
-          value={userInfo.location}
+          value={userInfo.location || ''}
           onChange={handleChange}
         />
       </FormGroup>
@@ -104,7 +119,7 @@ const UpdateUserProfile = (props) => {
           type='text'
           name='description'
           placeholder='Description'
-          value={userInfo.description}
+          value={userInfo.description || ''}
           onChange={handleChange}
         />
       </FormGroup>
@@ -115,12 +130,14 @@ const UpdateUserProfile = (props) => {
           type='text'
           name='interests'
           placeholder='Interests'
-          value={userInfo.interests}
+          value={userInfo.interests || []}
           onChange={handleChange}
         />
       </FormGroup>
       <Button>Update Profile</Button>
     </Form>
+    {/* } */}
+    </>
   )
 }
 
@@ -133,4 +150,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchUser})(UpdateUserProfile);
+export default connect(mapStateToProps, { fetchUser, updateUser })(UpdateUserProfile);

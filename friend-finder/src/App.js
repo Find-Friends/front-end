@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import UpdateUserProfile from "./components/UpdateUserProfile";
 import SignUp from "./components/SignUp";
 import UserHome from "./components/UserHome";
+import PrivateRoute from "./components/PrivateRoute";
 
 import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
@@ -38,8 +39,27 @@ function App() {
 
       <Route path="/edit-profile" component={UpdateUserProfile} />
 
+
       <Route path="/edit-profile/:id" component={UpdateUserProfile} />
       <Route exact path="/users/:id" component={UserHome} />
+
+     
+    
+    
+
+
+
+     
+
+      <PrivateRoute path='/edit-profile/:id' component={UpdateUserProfile} />
+      <PrivateRoute path='/users/:id' component={UserHome} />
+
+
+
+
+
+
+
     </div>
   );
 }
