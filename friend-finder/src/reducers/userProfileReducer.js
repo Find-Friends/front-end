@@ -1,14 +1,22 @@
-import { FETCH_USER, UPDATE_USER, DELETE_USER , GET_ALL_USERS } from '../actions';
+import {
+  FETCH_USER,
+  UPDATE_USER,
+  DELETE_USER,
+  GET_ALL_USERS,
+  POST_FRIEND_REQUEST
+} from "../actions";
 
 const initialState = {
   loading: false,
   user: null,
-  error: null, 
-  users: []
-}
+  error: null,
+  users: [],
+  requests: [],
+  friends: []
+};
 
 export const userProfileReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case FETCH_USER: {
       const error = action.payload.error;
       const user = action.payload.user;
@@ -18,18 +26,18 @@ export const userProfileReducer = (state = initialState, action) => {
           ...state,
           user: user,
           loading: loading
-        }
+        };
       } else if (error !== null) {
         return {
           ...state,
           error: error,
           loading: loading
-        }
+        };
       } else {
         return {
           ...state,
           loading: loading
-        }
+        };
       }
     }
     case GET_ALL_USERS: {
@@ -41,22 +49,23 @@ export const userProfileReducer = (state = initialState, action) => {
           ...state,
           users: users,
           loading: loading
-        }
+        };
       } else if (error !== null) {
         return {
           ...state,
           error: error,
           loading: loading
-        }
+        };
       } else {
         return {
           ...state,
           loading: loading
-        }
+        };
       }
-
     }
-    default: 
+    case POST_FRIEND_REQUEST: {
+    }
+    default:
       return state;
   }
-}
+};

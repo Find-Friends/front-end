@@ -1,28 +1,53 @@
-import React, { useState, useEffect } from "react";
-import axiosWithAuth from "../utils/axiosWithAuth";
+import React, { useState } from "react";
+import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { connect } from "react-redux";
 
-const FindFriends = () => {
-  const [friends, setFriends] = useState([]);
-  const [friendRequest, setRequest] = useState([]);
+import { postFriendRequest } from "../actions";
 
-  useEffect(() => {
-    axiosWithAuth()
-      .get("https://find-friends-api.herokuapp.com/api/users/5/all")
-      .then(res => {
-        console.log(res);
-        setFriends(res.data);
-      })
-      .catch(error => {
-        console.log("Data was not returned", error);
-      });
-  }, []);
+const FindFriends = props => {
+  const [request, setRequest] = useState({
+    message: "",
+    email: ""
+  });
+  const handleChange = event => {
+    setRequest({
+      ...request,
+      [event.target.name]: event.target.value
+    });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    props.postFriendRequest(request);
+  };
 
   return (
-    <div>
-      <div>
-        <h1>Find Friends!</h1>
-      </div>
-    </div>
+    <Form onSubmit={handleSubmit}>
+      <FormGroup>
+        <Label for="email">email</Label>
+        <Input
+          id="email"
+          type="text"
+          name="email"
+          placeholder="email"
+          value={request.email}
+          onChange={handleChange}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for="message">
+          Send Message:<textarea></textarea>
+        </Label>
+      </FormGroup>
+      <Button>Send Request</Button>
+    </Form>
   );
 };
-export default FindFriends;
+const mapStateToProps = state => {
+  console.log(state);
+  return {};
+};
+export default connect(
+  mapStateToProps,
+  { postFriendRequest }
+)(FindFriends);
