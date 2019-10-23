@@ -157,12 +157,19 @@ export const getAllUsers = id => dispatch => {
 //     });
 // };
 
-export const postFriendRequest = postData => dispatch => {
+export const postFriendRequest = (postData, userID, friendID) => dispatch => {
   dispatch({
     type: POST_FRIEND_REQUEST,
     payload: {
       loading: true
     }
   });
-  axiosWithAuth().post("/api/users/:id/:requestID");
+  axiosWithAuth()
+    .post(`/api/users/${userID}/${friendID}`, postData)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(error => {
+      console.log("this is an error", error);
+    });
 };
