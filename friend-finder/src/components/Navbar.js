@@ -13,8 +13,8 @@ export default function Navbar () {
             <h1>Friend Finder</h1>
             </div>
             
-            <div className="navbaritems">
-            <NavLink className="navlink" to="/">Home</NavLink>
+             <div className="navbaritems">
+            <NavLink className="navlink" exact to="/">Home</NavLink>
             <NavLink className="navlink" to="/profile">Edit Profile</NavLink>
             <NavLink className="navlink" to="/friends">Friends</NavLink>
             <NavLink className="navlink" to="/signup">Sign Up</NavLink>

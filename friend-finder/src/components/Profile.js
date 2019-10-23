@@ -14,7 +14,7 @@ export default function Profile() {
     useEffect(()=> {
 
        axiosWithAuth()
-       .get('https://find-friends-api.herokuapp.com/api/users/:id/friends')
+       .get('/api/users/:id/friends')
         .then(response => {
             setFriends(response.data); 
             console.log(response)})
@@ -27,7 +27,6 @@ export default function Profile() {
 
     <div className="Profile">
 
-       
 
         <div className="Leftside">
             <div className="Userimgbox">User Image</div>
