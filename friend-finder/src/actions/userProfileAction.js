@@ -192,7 +192,7 @@ export const getFriendRequest = id => dispatch => {
       dispatch({
         type: GET_FRIEND_REQUEST,
         payload: {
-          requests: response.data.friends,
+          requests: response.data.requests,
           loading: false
         }
       });
@@ -203,7 +203,6 @@ export const getFriendRequest = id => dispatch => {
         type: GET_FRIEND_REQUEST,
         payload: {
           error: error.response,
-
           loading: false
         }
       });
