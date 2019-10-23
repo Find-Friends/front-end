@@ -7,14 +7,14 @@ export const GET_ALL_USERS = 'GET_ALL_USERS';
 
 export const fetchUser = id => dispatch => {
   dispatch({type: FETCH_USER, payload: {
-    user: null,
+    user: {},
     error: null,
     loading: true
   }})
   axiosWithAuth()
   .get(`/api/users/${id}`)
     .then(response => {
-      console.log(response);
+      // console.log(response);
       dispatch({type: FETCH_USER, payload: {
         user: response.data,
         loading: false
@@ -32,36 +32,61 @@ export const fetchUser = id => dispatch => {
 export const updateUser = userData => dispatch => {
   dispatch({type: UPDATE_USER, payload: {
     loading: true,
-    user: null, 
+    user: {}, 
     error: null
   }})
   axiosWithAuth()
   .put(`/api/users/${userData.id}`, userData)
     .then(response => {
-      console.log(response);
-
+      // console.log(response);
+      dispatch({type: UPDATE_USER, payload: {
+        user: response.data.user,
+        loading: false
+      }})
     })
     .catch(error => {
       console.log(error);
+      dispatch({type: UPDATE_USER, payload: {
+        error: error.response,
+        loading: false
+      }})
     })
-
 }
 
 export const deleteUser = id => dispatch => {
-
+  dispatch({type: DELETE_USER, payload: {
+    error: false,
+    user: {},
+    loading: true
+  }})
+  axiosWithAuth()
+  .delete(`/api/users/${id}`)
+    .then(response => {
+      console.log(response);
+      dispatch({type: DELETE_USER, payload: {
+        user: {},
+        loading: false
+      }})
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({type: DELETE_USER, payload: {
+        error: error.response,
+        loading: false
+      }})
+    })
 }
 
 export const getAllUsers = id => dispatch => {
   dispatch({type: GET_ALL_USERS, payload : {
     error: null,
     users: [],
-    user: null,
     loading: true
   }})
   axiosWithAuth()
     .get(`/api/users/${id}/all`)  
       .then(response => {
-        console.log(response);
+        // console.log(response);
         dispatch({type: GET_ALL_USERS, payload: {
           users: response.data.users,
           loading: false
