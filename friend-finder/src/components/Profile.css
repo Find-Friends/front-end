@@ -34,8 +34,6 @@
     margin: 5px 0 2px 0;
     border: 1px solid #0066FF;
     border-radius: 5px; 
-   
-    
 }
 
 /* Hobbie textarea */
@@ -47,12 +45,21 @@
     border: 1px solid #0066FF;
     width: 90%;
     margin: 5px 0 2px 0;
-    height: 85%;
-    border-radius: 5px; 
-    
+    height: 95%;
+    border-radius: 5px;   
 }
 
-
+/* EDIT BUTTON */
+button{
+    background-color:  #3498DB;
+    color:  white;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 15px;
+    border-radius: 5px;
+    
+}
 /* User Profile Image, and friends list*/
 
 .Leftside{

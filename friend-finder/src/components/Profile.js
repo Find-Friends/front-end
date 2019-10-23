@@ -29,6 +29,7 @@ export default function Profile() {
 
 
         <div className="Leftside">
+            
             <div className="Userimgbox">User Image</div>
             <div className="Friend-list">
         <h2>Friends</h2>

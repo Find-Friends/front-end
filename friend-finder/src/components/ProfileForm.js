@@ -71,6 +71,7 @@ const ProfileForm = ({values, touched, errors, status}) => {
         )}
     </Form>
 
+    <button>Edit Profile</button>
 </div>
     );
  };
