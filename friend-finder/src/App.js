@@ -16,26 +16,20 @@ function App() {
     <div>
       {/* <h1>Friend Finder</h1> */}
 
-      <Navbar/>
+      <Navbar />
 
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
-      <Route path="/findfriends" component={FindFriends} />
-
+      <Route path="/users/:id/addFriend" component={FindFriends} />
 
       {/* <Navbar />
       <Profile /> */}
 
-      <Route path="/profile" component={Profile}/> 
+      <Route path="/profile" component={Profile} />
       {/* <Route path="/friends" component={Friends}/> */}
 
       {/* <Navbar/> */}
       {/* <Profile/> */}
-
-
-      
-      
-
 
       {/* <Route exact path='/' component={}/>
     <Route path="/profile" component={Profile}/> 
@@ -44,6 +38,10 @@ function App() {
     <Route path="/login" component={Login}/> */}
 
       <Route path="/edit-profile" component={UpdateUserProfile} />
+
+
+      <Route path="/edit-profile/:id" component={UpdateUserProfile} />
+      <Route exact path="/users/:id" component={UserHome} />
 
      
     
@@ -55,6 +53,7 @@ function App() {
 
       <PrivateRoute path='/edit-profile/:id' component={UpdateUserProfile} />
       <PrivateRoute path='/users/:id' component={UserHome} />
+
 
 
 
