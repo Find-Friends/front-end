@@ -1,35 +1,28 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-
-import { getAllUsers } from "../actions";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
-import { getAllUsers, deleteUser } from '../actions';
-
+import { getAllUsers, deleteUser } from "../actions";
 
 const UserHome = props => {
   useEffect(() => {
     props.getAllUsers(props.match.params.id);
-// <<<<<<< dm-addfriend
+    // <<<<<<< dm-addfriend
   }, []);
   const clickHandler = () => {
     console.log("this has been clicked");
     props.history.push(`/users/${props.match.params.id}/addFriend`);
   };
 
-  }, [])
-
   const handleClick = () => {
     props.history.push(`/edit-profile/${props.match.params.id}`);
-  }
+  };
 
   const handleDelete = () => {
     props.deleteUser(props.match.params.id);
-    props.history.push('/signup');
-
-  }
-
+    props.history.push("/signup");
+  };
 
   return (
     <>
@@ -39,12 +32,12 @@ const UserHome = props => {
       {props.loading && <p>Loading.....</p>}
       <div>
         {props.users.map(user => {
-// <<<<<<< dm-addfriend
-//           {
-//             console.log(user);
-//           }
-// =======
-// >>>>>>> master
+          // <<<<<<< dm-addfriend
+          //           {
+          //             console.log(user);
+          //           }
+          // =======
+          // >>>>>>> master
           return (
             <div>
               <h2>{user.firstName}</h2>
@@ -78,5 +71,7 @@ const mapStateToProps = state => {
 //   }
 // }
 
-export default connect(mapStateToProps, {getAllUsers, deleteUser})(UserHome);
-
+export default connect(
+  mapStateToProps,
+  { getAllUsers, deleteUser }
+)(UserHome);

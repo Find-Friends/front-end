@@ -16,13 +16,6 @@ const initialState = {
   friends: []
 };
 
-//   user: {},
-//   error: null, 
-//   users: [],
-//   userLoggedIn: false
-// }
-
-
 export const userProfileReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USER: {
@@ -70,9 +63,7 @@ export const userProfileReducer = (state = initialState, action) => {
           loading: loading
         };
       }
-// <<<<<<< dm-addfriend
-// =======
-//     }
+    }
     case UPDATE_USER: {
       const error = action.payload.error;
       const user = action.payload.user;
@@ -82,18 +73,18 @@ export const userProfileReducer = (state = initialState, action) => {
           ...state,
           user: user,
           loading: loading
-        }
+        };
       } else if (error !== null) {
         return {
           ...state,
           error: error,
           loading: loading
-        }
+        };
       } else {
         return {
           ...state,
           loading: loading
-        }
+        };
       }
     }
     case DELETE_USER: {
@@ -102,8 +93,7 @@ export const userProfileReducer = (state = initialState, action) => {
         user: {},
         loading: false,
         error: action.payload.error
-      }
-
+      };
     }
     case POST_FRIEND_REQUEST: {
     }

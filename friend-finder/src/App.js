@@ -14,52 +14,16 @@ import FindFriends from "./components/FindFriends";
 function App() {
   return (
     <div>
-      {/* <h1>Friend Finder</h1> */}
-
       <Navbar />
 
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
       <Route path="/users/:id/addFriend" component={FindFriends} />
 
-      {/* <Navbar />
-      <Profile /> */}
-
       <Route path="/profile" component={Profile} />
-      {/* <Route path="/friends" component={Friends}/> */}
 
-      {/* <Navbar/> */}
-      {/* <Profile/> */}
-
-      {/* <Route exact path='/' component={}/>
-    <Route path="/profile" component={Profile}/> 
-    <Route path="/friends" component={Friends}/>
-    <Route path="/signup" component={Signup}/>
-    <Route path="/login" component={Login}/> */}
-
-      <Route path="/edit-profile" component={UpdateUserProfile} />
-
-
-      <Route path="/edit-profile/:id" component={UpdateUserProfile} />
-      <Route exact path="/users/:id" component={UserHome} />
-
-     
-    
-    
-
-
-
-     
-
-      <PrivateRoute path='/edit-profile/:id' component={UpdateUserProfile} />
-      <PrivateRoute path='/users/:id' component={UserHome} />
-
-
-
-
-
-
-
+      <PrivateRoute path="/edit-profile/:id" component={UpdateUserProfile} />
+      <PrivateRoute exact path="/users/:id" component={UserHome} />
     </div>
   );
 }
