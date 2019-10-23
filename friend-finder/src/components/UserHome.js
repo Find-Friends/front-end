@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { getAllUsers } from '../actions';
+import { getAllUsers, deleteUser } from '../actions';
 
 const UserHome = props => {
 
@@ -9,13 +9,24 @@ const UserHome = props => {
     props.getAllUsers(props.match.params.id);
   }, [])
 
+  const handleClick = () => {
+    props.history.push(`/edit-profile/${props.match.params.id}`);
+  }
+
+  const handleDelete = () => {
+    props.deleteUser(props.match.params.id);
+    props.history.push('/signup');
+
+  }
+
   return (
     <>
       <h1>Users</h1>
+      <button onClick={handleClick}>Update Profile</button>
+      <button onClick={handleDelete}>Delete Profile</button>
       {props.loading && <p>Loading.....</p>}
       <div>
         {props.users.map(user => {
-          {console.log(user)}
           return (
             <div>
               <h2>{user.firstName}</h2>
@@ -34,7 +45,7 @@ const UserHome = props => {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     users: state.userProfileReducer.users,
     loading: state.userProfileReducer.loading
@@ -42,4 +53,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {getAllUsers})(UserHome);
+export default connect(mapStateToProps, {getAllUsers, deleteUser})(UserHome);
