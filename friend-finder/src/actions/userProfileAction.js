@@ -5,6 +5,8 @@ export const UPDATE_USER = "UPDATE_USER";
 export const DELETE_USER = "DELETE_USER";
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const POST_FRIEND_REQUEST = " POST_FRIEND_REQUEST";
+export const ACCEPT_FRIEND_REQUEST = "ACCEPT_FRIEND_REQUEST";
+export const GET_FRIEND_REQUEST = "GET_FRIEND_REQUEST ";
 
 export const fetchUser = id => dispatch => {
   dispatch({
@@ -157,12 +159,55 @@ export const getAllUsers = id => dispatch => {
 //     });
 // };
 
-export const postFriendRequest = postData => dispatch => {
+export const postFriendRequest = (postData, userID, friendID) => dispatch => {
   dispatch({
     type: POST_FRIEND_REQUEST,
     payload: {
       loading: true
     }
   });
-  axiosWithAuth().post("/api/users/:id/:requestID");
+  axiosWithAuth()
+    .post(`/api/users/${userID}/${friendID}`, postData)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(error => {
+      console.log("this is an error", error);
+    });
 };
+
+export const getFriendRequest = id => dispatch => {
+  dispatch({
+    type: GET_FRIEND_REQUEST,
+    payload: {
+      error: null,
+      requests: [],
+      loading: true
+    }
+  });
+  axiosWithAuth()
+    .get(`/api/users/${id}/requests`)
+    .then(response => {
+      console.log(response);
+      dispatch({
+        type: GET_FRIEND_REQUEST,
+        payload: {
+          requests: response.data.friends,
+          loading: false
+        }
+      });
+    })
+    .catch(error => {
+      console.log(error.response);
+      dispatch({
+        type: GET_FRIEND_REQUEST,
+        payload: {
+          error: error.response,
+
+          loading: false
+        }
+      });
+    });
+};
+
+export const acceptFriendRequest = () => {};

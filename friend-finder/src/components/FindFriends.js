@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { postFriendRequest } from "../actions";
 
 const FindFriends = props => {
+  console.log(props);
   const [request, setRequest] = useState({
     message: "",
     email: ""
@@ -18,7 +19,9 @@ const FindFriends = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.postFriendRequest(request);
+    const friendPath = props.location.pathname.split("/");
+    const friendID = Number(friendPath[friendPath.length - 1]);
+    props.postFriendRequest(request, props.match.params.id, friendID);
   };
 
   return (
@@ -35,9 +38,15 @@ const FindFriends = props => {
         />
       </FormGroup>
       <FormGroup>
-        <Label for="message">
-          Send Message:<textarea></textarea>
-        </Label>
+        <Label for="message"></Label>
+        <Input
+          id="message"
+          type="text"
+          name="message"
+          placeholder="message"
+          value={request.message}
+          onChange={handleChange}
+        />
       </FormGroup>
       <Button>Send Request</Button>
     </Form>

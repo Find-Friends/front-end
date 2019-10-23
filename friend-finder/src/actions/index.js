@@ -8,5 +8,9 @@ export {
   getAllUsers,
   GET_ALL_USERS,
   POST_FRIEND_REQUEST,
-  postFriendRequest
+  postFriendRequest,
+  ACCEPT_FRIEND_REQUEST,
+  acceptFriendRequest,
+  GET_FRIEND_REQUEST,
+  getFriendRequest
 } from "./userProfileAction";
