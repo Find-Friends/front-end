@@ -23,12 +23,16 @@ const UserHome = props => {
     props.deleteUser(props.match.params.id);
     props.history.push("/signup");
   };
+  const handleFriendRequest = () => {
+    props.history.push(`/friend-request/${props.match.params.id}`);
+  };
 
   return (
     <>
       <h1>Users</h1>
       <button onClick={handleClick}>Update Profile</button>
       <button onClick={handleDelete}>Delete Profile</button>
+      <button onClick={handleFriendRequest}>View Friend Request</button>
       {props.loading && <p>Loading.....</p>}
       <div>
         {props.users.map(user => {
