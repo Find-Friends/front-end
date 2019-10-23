@@ -1,6 +1,6 @@
 /* PROFILE PAGE - entire page*/
 .Profile{
-    background: lightblue;
+    /* background: lightblue; */
     display: flex;
     margin: 2% 4% 0 4%;
     height: 100%;
@@ -49,17 +49,6 @@
     border-radius: 5px;   
 }
 
-/* EDIT BUTTON */
-button{
-    background-color:  #3498DB;
-    color:  white;
-    padding: 12px;
-    font-size: 15px;
-    font-weight: bold;
-    margin: 15px;
-    border-radius: 5px;
-    
-}
 /* User Profile Image, and friends list*/
 
 .Leftside{
