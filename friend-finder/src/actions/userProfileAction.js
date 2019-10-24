@@ -7,6 +7,8 @@ export const GET_ALL_USERS = "GET_ALL_USERS";
 export const POST_FRIEND_REQUEST = " POST_FRIEND_REQUEST";
 export const ACCEPT_FRIEND_REQUEST = "ACCEPT_FRIEND_REQUEST";
 export const GET_FRIEND_REQUEST = "GET_FRIEND_REQUEST ";
+export const DELETE_FRIEND_REQUEST = "DELETE_FRIEND_REQUEST ";
+export const GET_FRIENDS = 'GET_FRIENDS';
 
 export const fetchUser = id => dispatch => {
   dispatch({
@@ -188,7 +190,7 @@ export const getFriendRequest = id => dispatch => {
   axiosWithAuth()
     .get(`/api/users/${id}/requests`)
     .then(response => {
-      console.log(response);
+      console.log('-----get friend request response-------', response);
       dispatch({
         type: GET_FRIEND_REQUEST,
         payload: {
@@ -203,10 +205,54 @@ export const getFriendRequest = id => dispatch => {
         type: GET_FRIEND_REQUEST,
         payload: {
           error: error.response,
-          loading: false
+          loading: false, 
+          requests: []
         }
       });
     });
 };
 
 export const acceptFriendRequest = () => {};
+
+export const deleteFriendRequest = (userId, requestId) => dispatch => {
+  dispatch({type: DELETE_FRIEND_REQUEST, payload: {
+    loading: true
+  }})
+  axiosWithAuth()
+  .delete(`/api/users/${userId}/requests/${requestId}`)
+    .then(response => {
+      console.log(response);
+      dispatch({type : DELETE_FRIEND_REQUEST, payload: {
+        loading: false, 
+        deleteRequestId: requestId
+      }})
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({type: DELETE_FRIEND_REQUEST, payload: {
+        loading: false
+      }})
+    })
+}
+
+export const getFriends = id => dispatch => {
+  dispatch({type: GET_FRIENDS, payload: {
+    loading: true
+  }})
+  axiosWithAuth()
+  .get(`/api/users/${id}/friends`)
+    .then(response => {
+      console.log(response);
+      dispatch({type: GET_FRIENDS, payload: {
+        loading: false,
+        friends: response.data.friends
+      }})
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({type: GET_FRIENDS, payload: {
+        loading: false,
+        error: error.response
+      }})
+    })
+}

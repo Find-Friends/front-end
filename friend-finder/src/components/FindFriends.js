@@ -22,6 +22,7 @@ const FindFriends = props => {
     const friendPath = props.location.pathname.split("/");
     const friendID = Number(friendPath[friendPath.length - 1]);
     props.postFriendRequest(request, props.match.params.id, friendID);
+    props.history.push(`/users/${props.match.params.id}`);
   };
 
   return (
