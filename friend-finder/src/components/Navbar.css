@@ -5,21 +5,43 @@
   justify-content: space-evenly;
 }
 
+@media only screen and (max-width: 500px) {
+  .Navbar{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  height: 120px;
+  }
+}
+
 .Title{
     padding-top: 15px;
     justify-content: center;
-    /* border: 2px solid black; */
     
+}
+
+@media only screen and (max-width: 500px) {
+  .Title {
+    padding-top: 1px;
+    display: flex;
+   
+  }
 }
 
 .navbaritems{
     padding-top: 25px;
-    /* border: 2px solid black; */
-   
+    
+}
+@media only screen and (max-width: 500px) {
+  .navbaritems {
+    padding-top: 2px;
+    display: flex;
+    justify-content: center;
+  }
 }
 
+
 .navlink{
-   
     background-color: white;
     color: #3498DB;
     padding: 12px;
@@ -28,6 +50,12 @@
     margin: 10px;
     border-radius: 5px;
 }
+@media only screen and (max-width: 500px) {
+  .navlink {
+    padding:8px;
+  }
+}
+
 
 .navlink:hover {
     background-color: rgb(0, 225, 255);

@@ -5,14 +5,21 @@
     margin: 2% 4% 0 4%;
     height: 100%;
 }
+@media only screen and (max-width: 500px) {
+    .Profile {
+        display: flex;
+        /* flex-direction: column-reverse; */
+    }
+}
+
 
 
 /* RIGHT SIDE -Holds all the form info*/
 
 .Rightside{
     width: 75%;
-   
 }
+
 
 /* HOLDS formLeft and formRight */
 .formholder{  
@@ -20,6 +27,14 @@
     flex-wrap: wrap; 
     /* height: 100%;  */
 }
+
+@media only screen and (max-width: 500px) {
+    .formholder {
+      padding-top: 15px;
+    
+    }
+  }
+
 
 /* Default Input field */
  .formLeft{
@@ -36,10 +51,22 @@
     border-radius: 5px; 
 }
 
+
 /* Hobbie textarea */
 .formRight{
     width: 40%;
 }
+
+@media only screen and (max-width: 500px) {
+    .formRight {
+        width: 100%;
+        
+    }
+    .formLeft{
+        width: 100%;
+    }
+  }
+
 
 .input2{
     border: 1px solid #0066FF;
