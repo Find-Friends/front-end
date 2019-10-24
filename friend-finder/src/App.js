@@ -16,7 +16,7 @@ import Friends from "./components/Friends";
 function App() {
   return (
     <div>
-      <Navbar />
+      <Route path='/' component={Navbar} />
 
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
