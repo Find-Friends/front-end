@@ -14,5 +14,7 @@ export {
   GET_FRIEND_REQUEST,
   getFriendRequest,
   DELETE_FRIEND_REQUEST,
-  deleteFriendRequest
+  deleteFriendRequest,
+  GET_FRIENDS,
+  getFriends
 } from "./userProfileAction";

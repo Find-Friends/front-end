@@ -8,6 +8,7 @@ export const POST_FRIEND_REQUEST = " POST_FRIEND_REQUEST";
 export const ACCEPT_FRIEND_REQUEST = "ACCEPT_FRIEND_REQUEST";
 export const GET_FRIEND_REQUEST = "GET_FRIEND_REQUEST ";
 export const DELETE_FRIEND_REQUEST = "DELETE_FRIEND_REQUEST ";
+export const GET_FRIENDS = 'GET_FRIENDS';
 
 export const fetchUser = id => dispatch => {
   dispatch({
@@ -230,6 +231,28 @@ export const deleteFriendRequest = (userId, requestId) => dispatch => {
       console.log(error);
       dispatch({type: DELETE_FRIEND_REQUEST, payload: {
         loading: false
+      }})
+    })
+}
+
+export const getFriends = id => dispatch => {
+  dispatch({type: GET_FRIENDS, payload: {
+    loading: true
+  }})
+  axiosWithAuth()
+  .get(`/api/users/${id}/friends`)
+    .then(response => {
+      console.log(response);
+      dispatch({type: GET_FRIENDS, payload: {
+        loading: false,
+        friends: response.data.friends
+      }})
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({type: GET_FRIENDS, payload: {
+        loading: false,
+        error: error.response
       }})
     })
 }

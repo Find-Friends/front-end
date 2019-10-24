@@ -5,7 +5,8 @@ import {
   GET_ALL_USERS,
   POST_FRIEND_REQUEST,
   GET_FRIEND_REQUEST,
-  DELETE_FRIEND_REQUEST
+  DELETE_FRIEND_REQUEST, 
+  GET_FRIENDS
 } from "../actions";
 
 const initialState = {
@@ -135,8 +136,30 @@ export const userProfileReducer = (state = initialState, action) => {
         return {
           ...state
         }
+      }      
+    }
+    case GET_FRIENDS: {
+      const error = action.payload.error;
+      const friends = action.payload.friends;
+      const loading = action.payload.loading;
+      if (friends !== null) {
+        return {
+          ...state,
+          friends: friends,
+          loading: loading
+        };
+      } else if (error !== null) {
+        return {
+          ...state,
+          error: error,
+          loading: loading
+        };
+      } else {
+        return {
+          ...state,
+          loading: loading
+        };
       }
-      
     }
     default:
       return state;

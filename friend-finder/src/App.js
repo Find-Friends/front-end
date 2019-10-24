@@ -11,6 +11,7 @@ import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
 import FindFriends from "./components/FindFriends";
 import FriendRequest from "./components/FriendRequest";
+import Friends from "./components/Friends";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <PrivateRoute path="/edit-profile/:id" component={UpdateUserProfile} />
       <PrivateRoute exact path="/users/:id" component={UserHome} />
       <PrivateRoute path="/friend-request/:id" component={FriendRequest} />
+      <PrivateRoute path="/friends/:id" component={Friends} />
     </div>
   );
 }
