@@ -23,9 +23,15 @@ const UserHome = props => {
     props.deleteUser(props.match.params.id);
     props.history.push("/signup");
   };
+
   const handleFriendRequest = () => {
     props.history.push(`/friend-request/${props.match.params.id}`);
   };
+
+  const handleFriendView = () => {
+    console.log('friends is being clicked');
+    props.history.push(`/friends/${props.match.params.id}`);
+  }
 
   return (
     <>
@@ -33,13 +39,13 @@ const UserHome = props => {
       <button onClick={handleClick}>Update Profile</button>
       <button onClick={handleDelete}>Delete Profile</button>
       <button onClick={handleFriendRequest}>View Friend Request</button>
+      <button onClick={handleFriendView}>View Friends</button>
       {props.loading && <p>Loading.....</p>}
       <div>
         {props.users.map(user => {
           return (
             <div>
               <h2>{user.firstName}</h2>
-
               <h2>{user.lastName}</h2>
               <h2>{user.age}</h2>
               <h2>{user.description}</h2>
