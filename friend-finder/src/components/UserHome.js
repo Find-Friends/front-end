@@ -36,10 +36,10 @@ const UserHome = props => {
   return (
     <>
       <h1>Users</h1>
-      <button onClick={handleClick}>Update Profile</button>
+      {/* <button onClick={handleClick}>Update Profile</button> */}
       <button onClick={handleDelete}>Delete Profile</button>
-      <button onClick={handleFriendRequest}>View Friend Request</button>
-      <button onClick={handleFriendView}>View Friends</button>
+      {/* <button onClick={handleFriendRequest}>View Friend Request</button> */}
+      {/* <button onClick={handleFriendView}>View Friends</button> */}
       {props.loading && <p>Loading.....</p>}
       <div>
         {props.users.map(user => {
