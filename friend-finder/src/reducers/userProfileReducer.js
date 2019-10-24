@@ -6,7 +6,8 @@ import {
   POST_FRIEND_REQUEST,
   GET_FRIEND_REQUEST,
   DELETE_FRIEND_REQUEST, 
-  GET_FRIENDS
+  GET_FRIENDS, 
+  ACCEPT_FRIEND_REQUEST
 } from "../actions";
 
 const initialState = {
@@ -159,6 +160,19 @@ export const userProfileReducer = (state = initialState, action) => {
           ...state,
           loading: loading
         };
+      }
+    }
+    case ACCEPT_FRIEND_REQUEST: {
+      if (action.payload.acceptFriendRequestId) {
+        console.log(state);
+        console.log(action.payload.acceptFriendRequestId);
+        return {
+          ...state,
+          requests: state.requests.filter(request => request.id !== action.payload.acceptFriendRequestId)
+        }
+      }
+      return {
+        ...state,   
       }
     }
     default:

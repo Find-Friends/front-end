@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-import { getFriendRequest, deleteFriendRequest } from "../actions";
+import { getFriendRequest, deleteFriendRequest, acceptFriendRequest } from "../actions";
 
 const FriendRequest = props => {
 
@@ -12,6 +12,11 @@ const FriendRequest = props => {
 
   const handleDelete = (requestId) => {
     props.deleteFriendRequest(props.match.params.id, requestId);
+  }
+
+  const handleAccept = (requestId) => {
+    props.acceptFriendRequest(props.match.params.id, requestId);
+
   }
 
   return (
@@ -29,7 +34,7 @@ const FriendRequest = props => {
             <h2>{request.location}</h2>
             <h2>{request.description}</h2>
             <h2>{request.gender}</h2>
-            <button>Accept Request</button>
+            <button onClick={() => handleAccept(request.id)}>Accept Request</button>
             <button onClick={() => handleDelete(request.id)}>Delete Request</button>
           </>
         );
@@ -49,5 +54,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getFriendRequest, deleteFriendRequest }
+  { getFriendRequest, deleteFriendRequest, acceptFriendRequest }
 )(FriendRequest);
