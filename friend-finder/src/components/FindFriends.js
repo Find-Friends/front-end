@@ -29,7 +29,7 @@ const FindFriends = props => {
     <Form onSubmit={handleSubmit}>
       <FormGroup>
         <Label for="email" sm={2}>
-          Input your email:
+          Input your email
         </Label>
         <Col sm={10}>
           <Input
