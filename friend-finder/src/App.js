@@ -13,6 +13,7 @@ import FindFriends from "./components/FindFriends";
 import FriendRequest from "./components/FriendRequest";
 import Friends from "./components/Friends";
 import FriendRequestSent from "./components/FriendRequestSent";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <PrivateRoute path="/friend-request/:id" component={FriendRequest} />
       <PrivateRoute path="/friend-request-sent/:id" component={FriendRequestSent} />
       <PrivateRoute path="/friends/:id" component={Friends} />
+      <Route path='/' component={Footer} />
     </div>
   );
 }
