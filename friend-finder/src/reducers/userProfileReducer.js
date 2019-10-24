@@ -5,8 +5,8 @@ import {
   GET_ALL_USERS,
   POST_FRIEND_REQUEST,
   GET_FRIEND_REQUEST,
-  DELETE_FRIEND_REQUEST, 
-  GET_FRIENDS, 
+  DELETE_FRIEND_REQUEST,
+  GET_FRIENDS,
   ACCEPT_FRIEND_REQUEST
 } from "../actions";
 
@@ -120,7 +120,7 @@ export const userProfileReducer = (state = initialState, action) => {
       } else {
         return {
           ...state,
-          loading: loading, 
+          loading: loading,
           requests: []
         };
       }
@@ -131,13 +131,15 @@ export const userProfileReducer = (state = initialState, action) => {
         console.log(action.payload.deleteRequestId);
         return {
           ...state,
-          requests: state.requests.filter(request => request.id !== action.payload.deleteRequestId)
-        }
+          requests: state.requests.filter(
+            request => request.id !== action.payload.deleteRequestId
+          )
+        };
       } else {
         return {
           ...state
-        }
-      }      
+        };
+      }
     }
     case GET_FRIENDS: {
       const error = action.payload.error;
@@ -168,12 +170,14 @@ export const userProfileReducer = (state = initialState, action) => {
         console.log(action.payload.acceptFriendRequestId);
         return {
           ...state,
-          requests: state.requests.filter(request => request.id !== action.payload.acceptFriendRequestId)
-        }
+          requests: state.requests.filter(
+            request => request.id !== action.payload.acceptFriendRequestId
+          )
+        };
       }
       return {
-        ...state,   
-      }
+        ...state
+      };
     }
     default:
       return state;

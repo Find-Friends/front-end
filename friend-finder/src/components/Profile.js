@@ -1,57 +1,44 @@
-import React, {useState, useEffect} from 'react';
-import axiosWithAuth from '../utils/axiosWithAuth';
+import React, { useState, useEffect } from "react";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
-import ProfileCard from './ProfileCard';
-import ProfileForm from './ProfileForm';
+import ProfileCard from "./ProfileCard";
+import ProfileForm from "./ProfileForm";
 
 // Styling CSS
-import './Profile.css'
+import "./Profile.css";
 
 export default function Profile() {
+  const [friends, setFriends] = useState([]);
 
-    const [friends, setFriends] = useState([]);
+  useEffect(() => {
+    axiosWithAuth()
+      .get("/api/users/:id/friends")
+      .then(response => {
+        setFriends(response.data);
+        console.log(response);
+      })
+      .catch(err => console.log(err.response));
+  }, []);
 
-    useEffect(()=> {
-
-       axiosWithAuth()
-       .get('/api/users/:id/friends')
-        .then(response => {
-            setFriends(response.data); 
-            console.log(response)})
-        .catch(err => console.log(err.response));
-
-
-    }, [])
-
-    return(
-
+  return (
     <div className="Profile">
-
-
-        <div className="Leftside">
-            <div className="Userimgbox">User Image</div>
-            <div className="Friend-list">
-        <h2>Friends</h2>
-        {friends.map(friend => {
-            
-            return(
-                
-                <div className='FriendCard'>
-               
-                <ProfileCard key={friend.id} friend1={friend}/>
-
-                </div>
-            )
-
-            })}
-            </div>
-        </div> 
-
-        <div className="Rightside">
-        <ProfileForm/>
+      <div className="Leftside">
+        <div className="Userimgbox">User Image</div>
+        <div className="Friend-list">
+          <h2>Friends</h2>
+          {friends.map(friend => {
+            return (
+              <div className="FriendCard">
+                <ProfileCard key={friend.id} friend1={friend} />
+              </div>
+            );
+          })}
         </div>
+      </div>
 
+      <div className="Rightside">
+        <ProfileForm />
+      </div>
     </div>
-    );
-
-};
+  );
+}
