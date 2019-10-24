@@ -1,5 +1,14 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import {
+  Card,
+  Button,
+  CardHeader,
+  CardBody,
+  CardTitle,
+  CardText,
+  ButtonGroup
+} from "reactstrap";
 
 import axiosWithAuth from "../utils/axiosWithAuth";
 
@@ -29,30 +38,49 @@ const UserHome = props => {
   };
 
   const handleFriendView = () => {
-    console.log('friends is being clicked');
+    console.log("friends is being clicked");
     props.history.push(`/friends/${props.match.params.id}`);
-  }
+  };
 
   return (
     <>
-      <h1>Users</h1>
-      <button onClick={handleClick}>Update Profile</button>
-      <button onClick={handleDelete}>Delete Profile</button>
-      <button onClick={handleFriendRequest}>View Friend Request</button>
-      <button onClick={handleFriendView}>View Friends</button>
-      {props.loading && <p>Loading.....</p>}
       <div>
-        {props.users.map(user => {
-          return (
-            <div>
-              <h2>{user.firstName}</h2>
-              <h2>{user.lastName}</h2>
-              <h2>{user.age}</h2>
-              <h2>{user.description}</h2>
-              <button onClick={() => clickHandler(user.id)}>Add Friend</button>
-            </div>
-          );
-        })}
+        <Card body className="text-center">
+          <h2>Users</h2>
+          <ButtonGroup>
+            <Button color="primary" onClick={handleClick}>
+              Update Profile
+            </Button>
+            <Button color="danger" onClick={handleDelete}>
+              Delete Profile
+            </Button>
+
+            <Button color="secondary" onClick={handleFriendRequest}>
+              View Friend Request
+            </Button>
+            <Button color="success" onClick={handleFriendView}>
+              View Friends
+            </Button>
+          </ButtonGroup>
+          {props.loading && <p>Loading.....</p>}
+          <div>
+            {props.users.map(user => {
+              return (
+                <div>
+                  <CardHeader tag="h2">
+                    {user.firstName} {user.lastName}
+                  </CardHeader>
+
+                  <h2>{user.age}</h2>
+                  <h2>{user.description}</h2>
+                  <Button color="success" onClick={() => clickHandler(user.id)}>
+                    Add Friend
+                  </Button>
+                </div>
+              );
+            })}
+          </div>
+        </Card>
       </div>
     </>
   );
