@@ -4,12 +4,12 @@ import {
   DELETE_USER,
   GET_ALL_USERS,
   POST_FRIEND_REQUEST,
-  GET_FRIEND_REQUEST
+  GET_FRIEND_REQUEST,
+  DELETE_FRIEND_REQUEST
 } from "../actions";
 
 const initialState = {
   loading: false,
-
   user: {},
   error: null,
   users: [],
@@ -98,9 +98,6 @@ export const userProfileReducer = (state = initialState, action) => {
     }
     case POST_FRIEND_REQUEST: {
     }
-    default:
-      return state;
-
     case GET_FRIEND_REQUEST: {
       const error = action.payload.error;
       const requests = action.payload.requests;
@@ -115,14 +112,33 @@ export const userProfileReducer = (state = initialState, action) => {
         return {
           ...state,
           error: error,
-          loading: loading
+          loading: loading,
+          requests: []
         };
       } else {
         return {
           ...state,
-          loading: loading
+          loading: loading, 
+          requests: []
         };
       }
     }
+    case DELETE_FRIEND_REQUEST: {
+      console.log(action.payload.deleteRequestId);
+      if (action.payload.deleteRequestId) {
+        console.log(action.payload.deleteRequestId);
+        return {
+          ...state,
+          requests: state.requests.filter(request => request.id !== action.payload.deleteRequestId)
+        }
+      } else {
+        return {
+          ...state
+        }
+      }
+      
+    }
+    default:
+      return state;
   }
 };

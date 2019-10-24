@@ -1,19 +1,24 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-import { getFriendRequest } from "../actions";
+import { getFriendRequest, deleteFriendRequest } from "../actions";
 
 const FriendRequest = props => {
-  
+
   useEffect(() => {
     props.getFriendRequest(props.match.params.id);
   }, []);
 
+
+  const handleDelete = (requestId) => {
+    props.deleteFriendRequest(props.match.params.id, requestId);
+  }
+
   return (
     <div>
-      {props.loading && <p>Loading...</p>}
-
-      {props.requests.map(request => {
+      {(props.loading || !props.requests) && <p>Loading...</p>}
+      {console.log(props)}
+      {props.requests && props.requests.map(request => {
         {console.log(request)}
         return (
           <>
@@ -25,7 +30,7 @@ const FriendRequest = props => {
             <h2>{request.description}</h2>
             <h2>{request.gender}</h2>
             <button>Accept Request</button>
-            <button>Delete Request</button>
+            <button onClick={() => handleDelete(request.id)}>Delete Request</button>
           </>
         );
       })}
@@ -44,5 +49,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getFriendRequest }
+  { getFriendRequest, deleteFriendRequest }
 )(FriendRequest);
