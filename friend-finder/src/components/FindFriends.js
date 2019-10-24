@@ -51,7 +51,7 @@ const FindFriends = props => {
             id="message"
             type="textarea"
             name="message"
-            placeholder="message"
+            placeholder="messages"
             value={request.message}
             onChange={handleChange}
           />
