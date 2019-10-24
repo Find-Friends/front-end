@@ -122,7 +122,7 @@ export const userProfileReducer = (state = initialState, action) => {
       } else {
         return {
           ...state,
-          loading: loading, 
+          loading: loading,
           requests: []
         };
       }
@@ -133,13 +133,15 @@ export const userProfileReducer = (state = initialState, action) => {
         console.log(action.payload.deleteRequestId);
         return {
           ...state,
-          requests: state.requests.filter(request => request.id !== action.payload.deleteRequestId)
-        }
+          requests: state.requests.filter(
+            request => request.id !== action.payload.deleteRequestId
+          )
+        };
       } else {
         return {
           ...state
-        }
-      }      
+        };
+      }
     }
     case GET_FRIENDS: {
       const error = action.payload.error;
@@ -170,12 +172,14 @@ export const userProfileReducer = (state = initialState, action) => {
         console.log(action.payload.acceptFriendRequestId);
         return {
           ...state,
-          requests: state.requests.filter(request => request.id !== action.payload.acceptFriendRequestId)
-        }
+          requests: state.requests.filter(
+            request => request.id !== action.payload.acceptFriendRequestId
+          )
+        };
       }
       return {
-        ...state,   
-      }
+        ...state
+      };
     }
     case GET_FRIEND_REQUEST_SENT: {
       const error = action.payload.error;

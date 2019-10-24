@@ -191,7 +191,7 @@ export const getFriendRequest = id => dispatch => {
   axiosWithAuth()
     .get(`/api/users/${id}/requests`)
     .then(response => {
-      console.log('-----get friend request response-------', response);
+      console.log("-----get friend request response-------", response);
       dispatch({
         type: GET_FRIEND_REQUEST,
         payload: {
@@ -206,7 +206,7 @@ export const getFriendRequest = id => dispatch => {
         type: GET_FRIEND_REQUEST,
         payload: {
           error: error.response,
-          loading: false, 
+          loading: false,
           requests: []
         }
       });
@@ -214,59 +214,83 @@ export const getFriendRequest = id => dispatch => {
 };
 
 export const acceptFriendRequest = (userID, requestId) => dispatch => {
-  dispatch({type: ACCEPT_FRIEND_REQUEST, payload: {
-    loading: true
-  }})
+  dispatch({
+    type: ACCEPT_FRIEND_REQUEST,
+    payload: {
+      loading: true
+    }
+  });
   axiosWithAuth()
-  .put(`/api/users/${userID}/${requestId}`)
-  .then(response => {
-    console.log(response);
-    dispatch({type: ACCEPT_FRIEND_REQUEST, payload: {
-      loading: false,
-      acceptFriendRequestId : requestId
-    }})
-  })
-  .catch(error => {
-    console.log(error);
-    dispatch({type: ACCEPT_FRIEND_REQUEST, payload: {
-      loading: false,
-    }})
-  })
-};
-
-export const deleteFriendRequest = (userId, requestId) => dispatch => {
-  dispatch({type: DELETE_FRIEND_REQUEST, payload: {
-    loading: true
-  }})
-  axiosWithAuth()
-  .delete(`/api/users/${userId}/requests/${requestId}`)
+    .put(`/api/users/${userID}/${requestId}`)
     .then(response => {
       console.log(response);
-      dispatch({type : DELETE_FRIEND_REQUEST, payload: {
-        loading: false, 
-        deleteRequestId: requestId
-      }})
+      dispatch({
+        type: ACCEPT_FRIEND_REQUEST,
+        payload: {
+          loading: false,
+          acceptFriendRequestId: requestId
+        }
+      });
     })
     .catch(error => {
       console.log(error);
-      dispatch({type: DELETE_FRIEND_REQUEST, payload: {
-        loading: false
-      }})
-    })
-}
+      dispatch({
+        type: ACCEPT_FRIEND_REQUEST,
+        payload: {
+          loading: false
+        }
+      });
+    });
+};
 
-export const getFriends = id => dispatch => {
-  dispatch({type: GET_FRIENDS, payload: {
-    loading: true
-  }})
+export const deleteFriendRequest = (userId, requestId) => dispatch => {
+  dispatch({
+    type: DELETE_FRIEND_REQUEST,
+    payload: {
+      loading: true
+    }
+  });
   axiosWithAuth()
-  .get(`/api/users/${id}/friends`)
+    .delete(`/api/users/${userId}/requests/${requestId}`)
     .then(response => {
       console.log(response);
-      dispatch({type: GET_FRIENDS, payload: {
-        loading: false,
-        friends: response.data.friends
-      }})
+      dispatch({
+        type: DELETE_FRIEND_REQUEST,
+        payload: {
+          loading: false,
+          deleteRequestId: requestId
+        }
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({
+        type: DELETE_FRIEND_REQUEST,
+        payload: {
+          loading: false
+        }
+      });
+    });
+};
+
+export const getFriends = id => dispatch => {
+  dispatch({
+    type: GET_FRIENDS,
+    payload: {
+      loading: true
+    }
+  });
+  axiosWithAuth()
+    .get(`/api/users/${id}/friends`)
+    .then(response => {
+      console.log(response);
+      dispatch({
+        type: GET_FRIENDS,
+        payload: {
+          loading: false,
+          friends: response.data.friends
+        }
+      });
     })
     .catch(error => {
       console.log(error);
@@ -298,3 +322,4 @@ export const getFriendRequestSent = id => dispatch => {
       }})
     })
 }
+
