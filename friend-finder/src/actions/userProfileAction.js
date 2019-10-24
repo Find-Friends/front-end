@@ -8,7 +8,8 @@ export const POST_FRIEND_REQUEST = " POST_FRIEND_REQUEST";
 export const ACCEPT_FRIEND_REQUEST = "ACCEPT_FRIEND_REQUEST";
 export const GET_FRIEND_REQUEST = "GET_FRIEND_REQUEST ";
 export const DELETE_FRIEND_REQUEST = "DELETE_FRIEND_REQUEST ";
-export const GET_FRIENDS = "GET_FRIENDS";
+export const GET_FRIENDS = 'GET_FRIENDS';
+export const GET_FRIEND_REQUEST_SENT = "GET_FRIEND_REQUEST_SENT";
 
 export const fetchUser = id => dispatch => {
   dispatch({
@@ -293,12 +294,32 @@ export const getFriends = id => dispatch => {
     })
     .catch(error => {
       console.log(error);
-      dispatch({
-        type: GET_FRIENDS,
-        payload: {
-          loading: false,
-          error: error.response
-        }
-      });
-    });
-};
+      dispatch({type: GET_FRIENDS, payload: {
+        loading: false,
+        error: error.response
+      }})
+    })
+}
+
+export const getFriendRequestSent = id => dispatch => {
+  dispatch({type: GET_FRIEND_REQUEST_SENT, payload: {
+    loading: true
+  }})
+  axiosWithAuth()
+  .get(`/api/users/${id}/requests/sent`)
+    .then(response => {
+      console.log(response);
+      dispatch({type: GET_FRIEND_REQUEST_SENT, payload: {
+        loading: false,
+        requestsSent: response.data.requests
+      }})
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({type: GET_FRIEND_REQUEST_SENT, payload: {
+        loading: false,
+        error: error.response
+      }})
+    })
+}
+
