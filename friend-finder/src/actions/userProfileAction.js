@@ -119,7 +119,7 @@ export const getAllUsers = id => dispatch => {
     }
   });
   axiosWithAuth()
-    .get(`/api/users/${id}/all`)
+    .get(`/api/users/${id}/potentialFriends`)
     .then(response => {
       // console.log(response);
       dispatch({
@@ -212,7 +212,26 @@ export const getFriendRequest = id => dispatch => {
     });
 };
 
-export const acceptFriendRequest = () => {};
+export const acceptFriendRequest = (userID, requestId) => dispatch => {
+  dispatch({type: ACCEPT_FRIEND_REQUEST, payload: {
+    loading: true
+  }})
+  axiosWithAuth()
+  .put(`/api/users/${userID}/${requestId}`)
+  .then(response => {
+    console.log(response);
+    dispatch({type: ACCEPT_FRIEND_REQUEST, payload: {
+      loading: false,
+      acceptFriendRequestId : requestId
+    }})
+  })
+  .catch(error => {
+    console.log(error);
+    dispatch({type: ACCEPT_FRIEND_REQUEST, payload: {
+      loading: false,
+    }})
+  })
+};
 
 export const deleteFriendRequest = (userId, requestId) => dispatch => {
   dispatch({type: DELETE_FRIEND_REQUEST, payload: {
