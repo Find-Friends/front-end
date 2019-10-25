@@ -11,7 +11,11 @@ const Friends = props => {
 
   return (
     <div>
-      {props.loading && <p>Loading......</p>}
+      {props.loading && 
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      }
       {props.friends &&
         props.friends.map(friend => {
           return (

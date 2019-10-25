@@ -82,19 +82,20 @@ export const deleteUser = id => dispatch => {
     type: DELETE_USER,
     payload: {
       error: false,
-      user: {},
-      loading: true
+      loading: true, 
+      userDeleted: false
     }
   });
   axiosWithAuth()
     .delete(`/api/users/${id}`)
     .then(response => {
       console.log(response);
+      localStorage.removeItem('token');
       dispatch({
         type: DELETE_USER,
         payload: {
-          user: {},
-          loading: false
+          loading: false, 
+          userDeleted: true
         }
       });
     })
@@ -104,7 +105,8 @@ export const deleteUser = id => dispatch => {
         type: DELETE_USER,
         payload: {
           error: error.response,
-          loading: false
+          loading: false,
+          userDeleted: false
         }
       });
     });

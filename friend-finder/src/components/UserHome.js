@@ -30,6 +30,7 @@ const UserHome = props => {
 
   const handleDelete = () => {
     props.deleteUser(props.match.params.id);
+    
     props.history.push("/signup");
   };
 
@@ -47,10 +48,14 @@ const UserHome = props => {
 
       <h1>Users</h1>
       {/* <button onClick={handleClick}>Update Profile</button> */}
-      <button onClick={handleDelete}>Delete Profile</button>
+      {/* <button onClick={handleDelete}>Delete Profile</button> */}
       {/* <button onClick={handleFriendRequest}>View Friend Request</button> */}
       {/* <button onClick={handleFriendView}>View Friends</button> */}
-      {props.loading && <p>Loading.....</p>}
+      {props.loading && 
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      }
 
       <div>
         <Card body className="text-center">

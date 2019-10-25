@@ -15,7 +15,7 @@ export default function Navbar(props) {
     }
 
     const token = localStorage.getItem('token');
-    console.log(token);
+    // console.log(token);
 
     return (
         
@@ -34,7 +34,7 @@ export default function Navbar(props) {
                     :   
                     <>
                         <NavLink className="navlink" exact to={`/users/${userId}`}>Home</NavLink>
-                        <NavLink className="navlink" to="/profile">Profile</NavLink>
+                        <NavLink className="navlink" to={`/profile/${userId}`}>Profile</NavLink>
                         <NavLink className="navlink" to={`/edit-profile/${userId}`}>Update Profile</NavLink>
                         <NavLink className="navlink" to={`/friends/${userId}`}>Friends</NavLink>
                         <NavLink className="navlink" to={`/friend-request/${userId}`}>Friend Requests Received</NavLink>

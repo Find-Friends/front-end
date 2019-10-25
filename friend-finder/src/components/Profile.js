@@ -7,15 +7,15 @@ import ProfileForm from "./ProfileForm";
 // Styling CSS
 import "./Profile.css";
 
-export default function Profile() {
+export default function Profile(props) {
   const [friends, setFriends] = useState([]);
 
   useEffect(() => {
     axiosWithAuth()
-      .get("/api/users/:id/friends")
+      .get(`/api/users/${props.match.params.id}/friends`)
       .then(response => {
-        setFriends(response.data);
-        console.log(response);
+        // console.log(response);
+        setFriends(response.data.friends);
       })
       .catch(err => console.log(err.response));
   }, []);

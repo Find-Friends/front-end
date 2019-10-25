@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, FormGroup, Label, Input, Button, Col, Row } from "reactstrap";
 import { connect } from "react-redux";
 
-import { fetchUser, updateUser } from "../actions/index";
+import { fetchUser, updateUser, deleteUser } from "../actions/index";
 
 const UpdateUserProfile = props => {
   // console.log('update user profile props', props);
@@ -36,6 +36,12 @@ const UpdateUserProfile = props => {
     }
   }, [props.user]);
 
+  useEffect(() => {
+    if (props.userDeleted) {
+      props.history.push("/signup");
+    }
+  }, [props.userDeleted])
+
   const handleChange = event => {
     setUserInfo({
       ...userInfo,
@@ -47,6 +53,10 @@ const UpdateUserProfile = props => {
     event.preventDefault();
     props.updateUser(userInfo);
     props.history.push(`/users/${props.match.params.id}`);
+  };
+
+  const handleDelete = () => {
+    props.deleteUser(props.match.params.id);
   };
 
   return (
@@ -155,6 +165,8 @@ const UpdateUserProfile = props => {
           <Button color="success">Update Profile</Button>
         </Form>
         {/* } */}
+        <h6>Please click on the button below to delete your profile.</h6>
+        <Button onClick={handleDelete} color='danger'>Delete Profile</Button>
       </div>
     </>
   );
@@ -165,11 +177,12 @@ const mapStateToProps = state => {
   return {
     user: state.userProfileReducer.user,
     error: state.userProfileReducer.error,
-    loading: state.userProfileReducer.loading
+    loading: state.userProfileReducer.loading, 
+    userDeleted: state.userProfileReducer.userDeleted
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchUser, updateUser }
+  { fetchUser, updateUser, deleteUser }
 )(UpdateUserProfile);
