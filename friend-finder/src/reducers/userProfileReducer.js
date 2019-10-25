@@ -18,7 +18,8 @@ const initialState = {
   users: [],
   requests: [],
   friends: [], 
-  requestsSent: []
+  requestsSent: [], 
+  userDeleted: false
 };
 
 export const userProfileReducer = (state = initialState, action) => {
@@ -95,10 +96,23 @@ export const userProfileReducer = (state = initialState, action) => {
     case DELETE_USER: {
       return {
         ...state,
-        user: {},
-        loading: false,
-        error: action.payload.error
-      };
+        userDeleted: action.payload.userDeleted,
+        error: action.payload.error,
+        loading: action.payload.loading
+      }
+      // if (action.payload.userDeleted) {
+      //   return {
+      //     ...state,
+      //   user: {},
+      //   error: action.payload.error,
+      //   loading: action.payload.loading
+      //   }
+      // } else {
+      //   return {
+      //     ...state,
+      //     loading: action.payload.loading
+      //   }
+      // }
     }
     case POST_FRIEND_REQUEST: {
     }
