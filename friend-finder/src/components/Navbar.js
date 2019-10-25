@@ -21,6 +21,7 @@ export default function Navbar(props) {
         
         <nav className='Navbar'>
             <div className='Title'>
+                <img src="https://find-friends.netlify.com/img/friendship.png" alt='cartoon image of two friends'/>
             <h1>Friend Finder</h1>
             {/* {console.log('props', props)}  */}
             </div>
@@ -38,7 +39,7 @@ export default function Navbar(props) {
                         <NavLink className="navlink" to={`/friends/${userId}`}>Friends</NavLink>
                         <NavLink className="navlink" to={`/friend-request/${userId}`}>Friend Requests Received</NavLink>
                         <NavLink className="navlink" to={`/friend-request-sent/${userId}`}>Friend Requests Sent</NavLink>
-                        <button onClick={handleLogout}>Logout</button>
+                        <button  className="navlink" onClick={handleLogout}>Logout</button>
                     </>
                 
                 
