@@ -17,10 +17,10 @@ export default function ProfileCard(props) {
     <div className="FriendCard">
       <p>Friend</p>
       <Card>
-        <CardImg src={props.friend1.image} alt="Profile User image" />
+        {/* <CardImg src={props.friend1.image} alt="Profile User image" /> */}
         <CardBody>
-          <CardTitle>{props.friend1.firstname}</CardTitle>
-          <CardTitle>{props.friend1.lastname}</CardTitle>
+          <CardTitle>{props.friend1.firstName}</CardTitle>
+          <CardTitle>{props.friend1.lastName}</CardTitle>
         </CardBody>
       </Card>
     </div>

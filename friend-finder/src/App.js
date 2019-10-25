@@ -22,9 +22,9 @@ function App() {
 
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
-      <Route path="/users/:id/addFriend" component={FindFriends} />
+      <PrivateRoute path="/users/:id/addFriend" component={FindFriends} />
 
-      <Route path="/profile" component={Profile} />
+      <PrivateRoute path="/profile/:id" component={Profile} />
 
       <PrivateRoute path="/edit-profile/:id" component={UpdateUserProfile} />
       <PrivateRoute exact path="/users/:id" component={UserHome} />
