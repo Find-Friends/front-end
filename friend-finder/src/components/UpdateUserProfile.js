@@ -40,7 +40,7 @@ const UpdateUserProfile = props => {
     if (props.userDeleted) {
       props.history.push("/signup");
     }
-  }, [props.userDeleted])
+  }, [props.userDeleted]);
 
   const handleChange = event => {
     setUserInfo({
@@ -163,10 +163,11 @@ const UpdateUserProfile = props => {
             />
           </FormGroup>
           <Button color="success">Update Profile</Button>
+          <Button onClick={handleDelete} color="danger">
+            Delete Profile
+          </Button>
         </Form>
         {/* } */}
-        <h6>Please click on the button below to delete your profile.</h6>
-        <Button onClick={handleDelete} color='danger'>Delete Profile</Button>
       </div>
     </>
   );
@@ -177,7 +178,7 @@ const mapStateToProps = state => {
   return {
     user: state.userProfileReducer.user,
     error: state.userProfileReducer.error,
-    loading: state.userProfileReducer.loading, 
+    loading: state.userProfileReducer.loading,
     userDeleted: state.userProfileReducer.userDeleted
   };
 };
