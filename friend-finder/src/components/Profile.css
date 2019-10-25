@@ -1,18 +1,25 @@
 /* PROFILE PAGE - entire page*/
 .Profile {
-    background: lightblue;
+    /* background: lightblue; */
     display: flex;
     margin: 2% 4% 0 4%;
     height: 100%;
 }
+@media only screen and (max-width: 500px) {
+    .Profile {
+        display: flex;
+        /* flex-direction: column-reverse; */
+    }
+}
+
 
 
 /* RIGHT SIDE -Holds all the form info*/
 
 .Rightside {
     width: 75%;
-
 }
+
 
 /* HOLDS formLeft and formRight */
 .formholder {
@@ -20,6 +27,14 @@
     flex-wrap: wrap;
     /* height: 100%;  */
 }
+
+@media only screen and (max-width: 500px) {
+    .formholder {
+      padding-top: 15px;
+    
+    }
+  }
+
 
 /* Default Input field */
 .formLeft {
@@ -38,6 +53,7 @@
 
 }
 
+
 /* Hobbie textarea */
 .formRight {
     width: 40%;
@@ -51,7 +67,6 @@
     border-radius: 5px;
 
 }
-
 
 /* User Profile Image, and friends list*/
 

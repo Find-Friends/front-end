@@ -1,33 +1,46 @@
 .Navbar {
   background: #0066FF;
   display: flex;
-  height: 80px;
+  flex-direction: column;
   justify-content: space-evenly;
 }
 
 .Title {
-  padding-top: 15px;
+  padding-top: 10px;
+  display: flex;
   justify-content: center;
-  /* border: 2px solid black; */
+  
 
 }
 
 .navbaritems {
-  padding-top: 25px;
+  /* padding-top: 25px; */
   /* border: 2px solid black; */
+  
+  display: flex;
+  justify-content: center;
 
 }
+
 
 .navlink {
 
   background-color: white;
   color: #3498DB;
-  padding: 12px;
+  padding: 8px;
   font-size: 15px;
   font-weight: bold;
   margin: 10px;
   border-radius: 5px;
+  border: none;
 }
+@media only screen and (max-width: 500px) {
+  .navlink {
+    padding:8px;
+    
+  }
+}
+
 
 .navlink:hover {
   background-color: rgb(0, 225, 255);
@@ -46,4 +59,11 @@
 
 h1 {
   color: white;
+}
+
+img{
+  width: 50px;
+  height: 50px;
+  padding: 4px;
+  margin-right: 4px;
 }
