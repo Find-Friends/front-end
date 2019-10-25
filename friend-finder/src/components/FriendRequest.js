@@ -34,7 +34,11 @@ const FriendRequest = props => {
 
   return (
     <div>
-      {(props.loading || !props.requests) && <p>Loading...</p>}
+      {(props.loading || !props.requests) && 
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      }
       {console.log(props)}
       {props.requests &&
         props.requests.map(request => {

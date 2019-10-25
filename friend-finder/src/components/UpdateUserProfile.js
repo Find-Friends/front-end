@@ -165,7 +165,8 @@ const UpdateUserProfile = props => {
           <Button color="success">Update Profile</Button>
         </Form>
         {/* } */}
-        <button onClick={handleDelete}>DELETE PROFILE</button>
+        <h6>Please click on the button below to delete your profile.</h6>
+        <Button onClick={handleDelete} color='danger'>Delete Profile</Button>
       </div>
     </>
   );

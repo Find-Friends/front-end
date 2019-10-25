@@ -51,7 +51,11 @@ const UserHome = props => {
       {/* <button onClick={handleDelete}>Delete Profile</button> */}
       {/* <button onClick={handleFriendRequest}>View Friend Request</button> */}
       {/* <button onClick={handleFriendView}>View Friends</button> */}
-      {props.loading && <p>Loading.....</p>}
+      {props.loading && 
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      }
 
       <div>
         <Card body className="text-center">
