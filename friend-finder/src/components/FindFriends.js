@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button, Col } from "reactstrap";
 import { connect } from "react-redux";
 
 import { postFriendRequest } from "../actions";
@@ -28,28 +28,38 @@ const FindFriends = props => {
   return (
     <Form onSubmit={handleSubmit}>
       <FormGroup>
-        <Label for="email">email</Label>
-        <Input
-          id="email"
-          type="text"
-          name="email"
-          placeholder="email"
-          value={request.email}
-          onChange={handleChange}
-        />
+        <Label for="email" sm={2}>
+          Input your email
+        </Label>
+        <Col sm={10}>
+          <Input
+            id="email"
+            type="text"
+            name="email"
+            placeholder="email"
+            value={request.email}
+            onChange={handleChange}
+          />
+        </Col>
       </FormGroup>
       <FormGroup>
-        <Label for="message"></Label>
-        <Input
-          id="message"
-          type="text"
-          name="message"
-          placeholder="message"
-          value={request.message}
-          onChange={handleChange}
-        />
+        <Label for="message" sm={2}>
+          Send a message:
+        </Label>
+        <Col sm={10}>
+          <Input
+            id="message"
+            type="textarea"
+            name="message"
+            placeholder="messages"
+            value={request.message}
+            onChange={handleChange}
+          />
+        </Col>
       </FormGroup>
-      <Button>Send Request</Button>
+      <Col sm={10}>
+        <Button color="success">Send Request</Button>
+      </Col>
     </Form>
   );
 };

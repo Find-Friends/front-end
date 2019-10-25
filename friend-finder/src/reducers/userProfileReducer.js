@@ -6,7 +6,9 @@ import {
   POST_FRIEND_REQUEST,
   GET_FRIEND_REQUEST,
   DELETE_FRIEND_REQUEST, 
-  GET_FRIENDS
+  GET_FRIENDS, 
+  ACCEPT_FRIEND_REQUEST,
+  GET_FRIEND_REQUEST_SENT
 } from "../actions";
 
 const initialState = {
@@ -15,7 +17,8 @@ const initialState = {
   error: null,
   users: [],
   requests: [],
-  friends: []
+  friends: [], 
+  requestsSent: []
 };
 
 export const userProfileReducer = (state = initialState, action) => {
@@ -119,7 +122,7 @@ export const userProfileReducer = (state = initialState, action) => {
       } else {
         return {
           ...state,
-          loading: loading, 
+          loading: loading,
           requests: []
         };
       }
@@ -130,13 +133,15 @@ export const userProfileReducer = (state = initialState, action) => {
         console.log(action.payload.deleteRequestId);
         return {
           ...state,
-          requests: state.requests.filter(request => request.id !== action.payload.deleteRequestId)
-        }
+          requests: state.requests.filter(
+            request => request.id !== action.payload.deleteRequestId
+          )
+        };
       } else {
         return {
           ...state
-        }
-      }      
+        };
+      }
     }
     case GET_FRIENDS: {
       const error = action.payload.error;
@@ -146,6 +151,44 @@ export const userProfileReducer = (state = initialState, action) => {
         return {
           ...state,
           friends: friends,
+          loading: loading
+        };
+      } else if (error !== null) {
+        return {
+          ...state,
+          error: error,
+          loading: loading
+        };
+      } else {
+        return {
+          ...state,
+          loading: loading
+        };
+      }
+    }
+    case ACCEPT_FRIEND_REQUEST: {
+      if (action.payload.acceptFriendRequestId) {
+        console.log(state);
+        console.log(action.payload.acceptFriendRequestId);
+        return {
+          ...state,
+          requests: state.requests.filter(
+            request => request.id !== action.payload.acceptFriendRequestId
+          )
+        };
+      }
+      return {
+        ...state
+      };
+    }
+    case GET_FRIEND_REQUEST_SENT: {
+      const error = action.payload.error;
+      const requestsSent = action.payload.requestsSent;
+      const loading = action.payload.loading;
+      if (requestsSent !== null) {
+        return {
+          ...state,
+          requestsSent: requestsSent,
           loading: loading
         };
       } else if (error !== null) {

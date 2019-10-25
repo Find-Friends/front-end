@@ -1,5 +1,5 @@
 /* PROFILE PAGE - entire page*/
-.Profile{
+.Profile {
     /* background: lightblue; */
     display: flex;
     margin: 2% 4% 0 4%;
@@ -16,15 +16,15 @@
 
 /* RIGHT SIDE -Holds all the form info*/
 
-.Rightside{
+.Rightside {
     width: 75%;
 }
 
 
 /* HOLDS formLeft and formRight */
-.formholder{  
+.formholder {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     /* height: 100%;  */
 }
 
@@ -37,73 +37,65 @@
 
 
 /* Default Input field */
- .formLeft{
-    width: 60%; 
+.formLeft {
+    width: 60%;
     /* border: 2px solid black; */
 }
 
-.input{
+.input {
     width: 90%;
     padding: 5px;
     display: flex;
     margin: 5px 0 2px 0;
     border: 1px solid #0066FF;
-    border-radius: 5px; 
+    border-radius: 5px;
+
+
 }
 
 
 /* Hobbie textarea */
-.formRight{
+.formRight {
     width: 40%;
 }
 
-@media only screen and (max-width: 500px) {
-    .formRight {
-        width: 100%;
-        
-    }
-    .formLeft{
-        width: 100%;
-    }
-  }
-
-
-.input2{
+.input2 {
     border: 1px solid #0066FF;
     width: 90%;
     margin: 5px 0 2px 0;
-    height: 95%;
-    border-radius: 5px;   
+    height: 85%;
+    border-radius: 5px;
+
 }
 
 /* User Profile Image, and friends list*/
 
-.Leftside{
+.Leftside {
     /* border: 2px solid black; */
     width: 50%;
 }
 
 
 /* Profile Image box */
-.Userimgbox{
-    height:125px;
+.Userimgbox {
+    height: 125px;
     width: 125px;
-    border: 2px solid  #0066FF;
+    border: 2px solid #0066FF;
     border-radius: 5px;
     margin: 10px;
 }
 
 
-    /* FRIENDS LIST- lists all users friends */
-.Friend-list{
+/* FRIENDS LIST- lists all users friends */
+.Friend-list {
     margin: 10px;
-    border: 2px solid  #0066FF;
-    border-radius: 5px; 
-    height:125px;
+    border: 2px solid #0066FF;
+    border-radius: 5px;
+    height: 125px;
     width: 80%;
-    }
+}
 
-.FriendCard{
-   background:#0066FF;
-   
+.FriendCard {
+    background: #0066FF;
+
 }
