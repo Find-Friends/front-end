@@ -9,14 +9,14 @@
   padding-top: 10px;
   display: flex;
   justify-content: center;
-  
+
 
 }
 
 .navbaritems {
   /* padding-top: 25px; */
   /* border: 2px solid black; */
-  
+
   display: flex;
   justify-content: center;
 
@@ -34,11 +34,43 @@
   border-radius: 5px;
   border: none;
 }
-@media only screen and (max-width: 500px) {
+
+.button {
+  background-color: white;
+  color: #3498DB;
+  padding: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+
+@media only screen and (max-width: 800px) {
   .navlink {
-    padding:8px;
-    
+
+    padding: 8px;
+    display: flex;
+    flex-direction: column-reverse;
+
+
+
   }
+
+  .button {
+    width: 96%;
+    padding: 8px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .navbaritems {
+    display: inline-block;
+
+  }
+
+
 }
 
 
@@ -61,7 +93,7 @@ h1 {
   color: white;
 }
 
-img{
+img {
   width: 50px;
   height: 50px;
   padding: 4px;

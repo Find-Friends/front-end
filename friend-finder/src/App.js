@@ -29,9 +29,12 @@ function App() {
       <PrivateRoute path="/edit-profile/:id" component={UpdateUserProfile} />
       <PrivateRoute exact path="/users/:id" component={UserHome} />
       <PrivateRoute path="/friend-request/:id" component={FriendRequest} />
-      <PrivateRoute path="/friend-request-sent/:id" component={FriendRequestSent} />
+      <PrivateRoute
+        path="/friend-request-sent/:id"
+        component={FriendRequestSent}
+      />
       <PrivateRoute path="/friends/:id" component={Friends} />
-      <Route path='/' component={Footer} />
+      <Route path="/" component={Footer} />
     </div>
   );
 }
