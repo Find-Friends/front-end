@@ -54,107 +54,108 @@ const UpdateUserProfile = props => {
       {/* {console.log("user props is -------", props.user)} */}
       {/* {console.log('------user info-----', userInfo)} */}
       {/* {props.loading ? <p>Loading</p> : */}
+      <div className="container">
+        <Form onSubmit={handleSubmit}>
+          <Row form>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="firstName">First Name</Label>
+                <Input
+                  id="firstName"
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={userInfo.firstName}
+                  onChange={handleChange}
+                />
+              </FormGroup>
+            </Col>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="lastName">Last Name</Label>
+                <Input
+                  id="lastName"
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={userInfo.lastName || ""}
+                  onChange={handleChange}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row form>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="age">Age</Label>
+                <Input
+                  id="age"
+                  type="text"
+                  name="age"
+                  placeholder="Age"
+                  value={userInfo.age || ""}
+                  onChange={handleChange}
+                />
+              </FormGroup>
+            </Col>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="gender">Gender</Label>
+                <Input
+                  id="gender"
+                  type="text"
+                  name="gender"
+                  placeholder="Gender"
+                  value={userInfo.gender || ""}
+                  onChange={handleChange}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row form>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="location">Location</Label>
+                <Input
+                  id="location"
+                  type="text"
+                  name="location"
+                  placeholder="Location"
+                  value={userInfo.location || ""}
+                  onChange={handleChange}
+                />
+              </FormGroup>
+            </Col>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="description">Description</Label>
+                <Input
+                  id="description"
+                  type="text"
+                  name="description"
+                  placeholder="Description"
+                  value={userInfo.description || ""}
+                  onChange={handleChange}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+          <FormGroup>
+            <Label for="interests">Interests</Label>
 
-      <Form onSubmit={handleSubmit}>
-        <Row form>
-          <Col md={6}>
-            <FormGroup>
-              <Label for="firstName">First Name</Label>
-              <Input
-                id="firstName"
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={userInfo.firstName}
-                onChange={handleChange}
-              />
-            </FormGroup>
-          </Col>
-          <Col md={6}>
-            <FormGroup>
-              <Label for="lastName">Last Name</Label>
-              <Input
-                id="lastName"
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                value={userInfo.lastName || ""}
-                onChange={handleChange}
-              />
-            </FormGroup>
-          </Col>
-        </Row>
-        <Row form>
-          <Col md={6}>
-            <FormGroup>
-              <Label for="age">Age</Label>
-              <Input
-                id="age"
-                type="text"
-                name="age"
-                placeholder="Age"
-                value={userInfo.age || ""}
-                onChange={handleChange}
-              />
-            </FormGroup>
-          </Col>
-          <Col md={6}>
-            <FormGroup>
-              <Label for="gender">Gender</Label>
-              <Input
-                id="gender"
-                type="text"
-                name="gender"
-                placeholder="Gender"
-                value={userInfo.gender || ""}
-                onChange={handleChange}
-              />
-            </FormGroup>
-          </Col>
-        </Row>
-        <Row form>
-          <Col md={6}>
-            <FormGroup>
-              <Label for="location">Location</Label>
-              <Input
-                id="location"
-                type="text"
-                name="location"
-                placeholder="Location"
-                value={userInfo.location || ""}
-                onChange={handleChange}
-              />
-            </FormGroup>
-          </Col>
-          <Col md={6}>
-            <FormGroup>
-              <Label for="description">Description</Label>
-              <Input
-                id="description"
-                type="text"
-                name="description"
-                placeholder="Description"
-                value={userInfo.description || ""}
-                onChange={handleChange}
-              />
-            </FormGroup>
-          </Col>
-        </Row>
-        <FormGroup>
-          <Label for="interests">Interests</Label>
-
-          <Input
-            id="interests"
-            type="textarea"
-            name="interests"
-            placeholder="Interests"
-            value={userInfo.interests || []}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <Button color="success">Update Profile</Button>
-      </Form>
-      {/* } */}
+            <Input
+              id="interests"
+              type="textarea"
+              name="interests"
+              placeholder="Interests"
+              value={userInfo.interests || []}
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <Button color="success">Update Profile</Button>
+        </Form>
+        {/* } */}
+      </div>
     </>
   );
 };

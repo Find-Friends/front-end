@@ -28,36 +28,34 @@ const FindFriends = props => {
   return (
     <Form onSubmit={handleSubmit}>
       <FormGroup>
-        <Label for="email" sm={2}>
-          Input your email
-        </Label>
-        <Col sm={10}>
+        <Col sm="12" md={{ size: 6, offset: 3 }}>
+          <Label for="email">Input your Email</Label>
+
           <Input
             id="email"
             type="text"
             name="email"
-            placeholder="email"
+            placeholder="Email"
             value={request.email}
             onChange={handleChange}
           />
         </Col>
       </FormGroup>
       <FormGroup>
-        <Label for="message" sm={2}>
-          Send a message:
-        </Label>
-        <Col sm={10}>
+        <Col sm="12" md={{ size: 6, offset: 3 }}>
+          <Label for="message">Send a Message</Label>
+
           <Input
             id="message"
             type="textarea"
             name="message"
-            placeholder="messages"
+            placeholder="Message"
             value={request.message}
             onChange={handleChange}
           />
         </Col>
       </FormGroup>
-      <Col sm={10}>
+      <Col sm="12" md={{ size: 6, offset: 3 }}>
         <Button color="success">Send Request</Button>
       </Col>
     </Form>

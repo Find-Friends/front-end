@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap";
 
 import axiosWithAuth from "../utils/axiosWithAuth";
 
@@ -40,31 +40,43 @@ class Login extends React.Component {
 
   render() {
     return (
-      <Form inline onSubmit={this.handleSubmit}>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Label for="username">Username </Label>
-          <Input
-            id="username"
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={this.state.credentials.username}
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Label for="password">Password </Label>
-          <Input
-            id="password"
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={this.state.credentials.password}
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-        <Button color="success">Login</Button>
-      </Form>
+      <div className="container">
+        <Form onSubmit={this.handleSubmit}>
+          <Row form>
+            <Col sm="12" md={{ size: 6, offset: 3 }}>
+              <FormGroup>
+                <Label for="username">Username </Label>
+                <Input
+                  id="username"
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  value={this.state.credentials.username}
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row form>
+            <Col sm="12" md={{ size: 6, offset: 3 }}>
+              <FormGroup>
+                <Label for="password">Password </Label>
+                <Input
+                  id="password"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={this.state.credentials.password}
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
+            <Button color="success">Login</Button>
+          </Col>
+        </Form>
+      </div>
     );
   }
 }
