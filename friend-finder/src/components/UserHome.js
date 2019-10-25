@@ -52,8 +52,8 @@ const UserHome = props => {
       {/* <button onClick={handleFriendRequest}>View Friend Request</button> */}
       {/* <button onClick={handleFriendView}>View Friends</button> */}
       {props.loading && 
-        <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
+        <div className="spinner-border text-primary" role="status">
+          <span className="sr-only">Loading...</span>
         </div>
       }
 
@@ -64,7 +64,7 @@ const UserHome = props => {
           <div>
             {props.users.map(user => {
               return (
-                <div>
+                <div key={user.id}>
                   <CardHeader tag="h2">
                     {user.firstName} {user.lastName}
                   </CardHeader>

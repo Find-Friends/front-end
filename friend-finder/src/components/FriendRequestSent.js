@@ -20,8 +20,8 @@ const FriendRequestSent = props => {
   return (
     <div>
       {props.loading && 
-        <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
+        <div className="spinner-border text-primary" role="status">
+          <span className="sr-only">Loading...</span>
         </div>
       }
       {props.requestsSent &&
@@ -47,7 +47,7 @@ const FriendRequestSent = props => {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     loading: state.userProfileReducer.loading,
     requestsSent: state.userProfileReducer.requestsSent

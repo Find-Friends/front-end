@@ -12,8 +12,8 @@ const Friends = props => {
   return (
     <div>
       {props.loading && 
-        <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
+        <div className="spinner-border text-primary" role="status">
+          <span className="sr-only">Loading...</span>
         </div>
       }
       {props.friends &&
@@ -36,7 +36,7 @@ const Friends = props => {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     loading: state.userProfileReducer.loading,
     friends: state.userProfileReducer.friends
